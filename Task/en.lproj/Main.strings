@@ -1,0 +1,42 @@
+
+/* Class = "UIBarButtonItem"; title = "Logout"; ObjectID = "01h-wY-6Fv"; */
+"01h-wY-6Fv.title" = "Logout";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "6Z3-YK-dP9"; */
+"6Z3-YK-dP9.text" = "Label";
+
+/* Class = "UITableViewSection"; headerTitle = "Due Date"; ObjectID = "9wG-vu-IDG"; */
+"9wG-vu-IDG.headerTitle" = "Due Date";
+
+/* Class = "UINavigationItem"; title = "Task List"; ObjectID = "A4T-rC-sw2"; */
+"A4T-rC-sw2.title" = "Task List";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "BPG-Fp-pu6"; */
+"BPG-Fp-pu6.text" = "Label";
+
+/* Class = "UITableViewSection"; headerTitle = "Description"; ObjectID = "DcJ-gt-850"; */
+"DcJ-gt-850.headerTitle" = "Description";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "JOd-LV-dWv"; */
+"JOd-LV-dWv.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Task"; ObjectID = "K81-B9-3ZA"; */
+"K81-B9-3ZA.title" = "Task";
+
+/* Class = "UINavigationItem"; title = "Edit Task List"; ObjectID = "L5u-NL-TRE"; */
+"L5u-NL-TRE.title" = "Edit Task List";
+
+/* Class = "UITableViewSection"; headerTitle = "Title"; ObjectID = "Zzp-yy-uJZ"; */
+"Zzp-yy-uJZ.headerTitle" = "Title";
+
+/* Class = "UITableViewSection"; headerTitle = "Title"; ObjectID = "dup-x2-cp9"; */
+"dup-x2-cp9.headerTitle" = "Title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nDf-t2-cTl"; */
+"nDf-t2-cTl.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Edit Task"; ObjectID = "oog-ER-IgL"; */
+"oog-ER-IgL.title" = "Edit Task";
+
+/* Class = "UITextView"; text = "..."; ObjectID = "wmy-mK-wfc"; */
+"wmy-mK-wfc.text" = "...";
