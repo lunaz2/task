@@ -157,6 +157,51 @@ shouldBeginLogInWithUsername:(NSString *)username
     [self performSegueWithIdentifier:@"taskListToTask" sender:nil];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        PFObject *object = [_taskList objectAtIndex:indexPath.row];
+        [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(!error) {
+                
+            }
+            else {
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+        PFQuery *query = [[PFQuery alloc] initWithClassName:@"Task"];
+        [query whereKey:@"username" equalTo:[[PFUser currentUser] username]];
+        [query whereKey:@"taskListId" equalTo:[object valueForKey:@"objectId"]];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                NSLog(@"Retrieved %lu objects", (unsigned long)objects.count);
+                NSArray *temp = [[NSArray alloc] initWithArray:objects];
+                for (PFObject *task in temp) {
+                    
+                    [task deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                        if(!error) {
+                            
+                        }
+                        else {
+                            NSLog(@"Error: %@ %@", error, [error userInfo]);
+                        }
+                    }];
+                }
+            } else {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+        
+        [_taskList removeObjectAtIndex:indexPath.row];
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier  isEqual: @"taskListToTask"]) {
         TaskTableViewController *vc = [segue destinationViewController];

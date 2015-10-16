@@ -18,8 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    checked = NO;
     datePicker = [[UIDatePicker alloc] init];
-    datePicker.datePickerMode = UIDatePickerModeDate;
+    datePicker.datePickerMode = UIDatePickerModeDateAndTime;
     [_editTaskDueField setInputView:datePicker];
     
     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
@@ -32,19 +33,23 @@
     if(_task != nil) {
         _editTaskTitleField.text = _task[@"title"];
         _editTaskDescTextView.text = _task[@"description"];
+        [datePicker setDate:_task[@"deadline"]];
         [self showDate];
-        
-        
+        checked = [[_task objectForKey:@"completed"] boolValue];
     }
     else {
         _task = [[PFObject alloc] initWithClassName:@"Task"];
     }
+
+    if(checked)
+        [_completeButton setImage:[UIImage imageNamed:@"checked_checkbox.png"] forState:UIControlStateNormal];
+    else [_completeButton setImage:[UIImage imageNamed:@"unchecked_checkbox.png"] forState:UIControlStateNormal];
     
 }
 
 -(void)showDate {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd/MMM/YYYY"];
+    [formatter setDateFormat:@"dd/MMM/YYYY hh:mm a"];
     _editTaskDueField.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:datePicker.date]];
     [_editTaskDueField resignFirstResponder];
 }
@@ -57,7 +62,7 @@
     _task[@"description"] = _editTaskDescTextView.text;
     _task[@"deadline"] = datePicker.date;
     _task[@"taskListId"] = _taskListId;
-    
+    _task[@"completed"] = [NSNumber numberWithBool:checked];
     [_task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (!error) {
             [[[UIAlertView alloc] initWithTitle:@"Success" message:@"Information successfully saved" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
@@ -67,6 +72,16 @@
         }
     }];
     
+}
+- (IBAction)completeBtn:(id)sender {
+    if(!checked) {
+        [_completeButton setImage:[UIImage imageNamed:@"checked_checkbox.png"] forState:UIControlStateNormal];
+        checked = YES;
+    }
+    else {
+        [_completeButton setImage:[UIImage imageNamed:@"unchecked_checkbox.png"] forState:UIControlStateNormal];
+        checked = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface EditTaskTableViewController : UITableViewController
+@interface EditTaskTableViewController : UITableViewController {
+    BOOL checked;
+}
+
 @property (weak, nonatomic) IBOutlet UITextField *editTaskTitleField;
 @property (weak, nonatomic) IBOutlet UITextView *editTaskDescTextView;
 @property (weak, nonatomic) IBOutlet UITextField *editTaskDueField;
+@property (weak, nonatomic) IBOutlet UIButton *completeButton;
+
 @property PFObject *task;
 @property NSString *taskListId;
 @end
