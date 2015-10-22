@@ -54,7 +54,7 @@
         PFLogInViewController* logInViewController = [[PFLogInViewController alloc] init];
         PFSignUpViewController* signUpViewController = [[PFSignUpViewController alloc] init];
         
-        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton | PFLogInFieldsDismissButton | PFLogInFieldsPasswordForgotten | PFLogInFieldsSignUpButton;
+        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton  | PFLogInFieldsPasswordForgotten | PFLogInFieldsSignUpButton;
         
         UILabel *logInTitle = [[UILabel alloc] init];
         logInTitle.text = @"Task Management";
