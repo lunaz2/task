@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		933371A01BD2124C00165D75 /* TaskPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9333719F1BD2124C00165D75 /* TaskPhotoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		93D721BB1BCD79CB00821FCD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D721BA1BCD79CB00821FCD /* main.m */; };
 		93D721BE1BCD79CB00821FCD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D721BD1BCD79CB00821FCD /* AppDelegate.m */; };
 		93D721C41BCD79CB00821FCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D721C21BCD79CB00821FCD /* Main.storyboard */; };
@@ -56,7 +57,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		93C74FCC1BCE0A2E003BEA3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		933371941BD200A800165D75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		9333719E1BD2124C00165D75 /* TaskPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskPhotoViewController.h; sourceTree = "<group>"; };
+		9333719F1BD2124C00165D75 /* TaskPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskPhotoViewController.m; sourceTree = "<group>"; };
 		93D721B61BCD79CB00821FCD /* Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Task.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D721BA1BCD79CB00821FCD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		93D721BC1BCD79CB00821FCD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 				93D722111BCD7AAC00821FCD /* EditTaskListTableViewController.m */,
 				93D722161BCD7ACA00821FCD /* EditTaskTableViewController.h */,
 				93D722171BCD7ACA00821FCD /* EditTaskTableViewController.m */,
+				9333719E1BD2124C00165D75 /* TaskPhotoViewController.h */,
+				9333719F1BD2124C00165D75 /* TaskPhotoViewController.m */,
 				93D722191BCD7B4000821FCD /* TaskListTableViewCell.h */,
 				93D7221A1BCD7B4000821FCD /* TaskListTableViewCell.m */,
 				93D7221C1BCD7B4C00821FCD /* TaskTableViewCell.h */,
@@ -370,6 +375,7 @@
 			files = (
 				93D722121BCD7AAC00821FCD /* EditTaskListTableViewController.m in Sources */,
 				93D721BE1BCD79CB00821FCD /* AppDelegate.m in Sources */,
+				933371A01BD2124C00165D75 /* TaskPhotoViewController.m in Sources */,
 				93D722151BCD7ABB00821FCD /* TaskTableViewController.m in Sources */,
 				93D7221B1BCD7B4000821FCD /* TaskListTableViewCell.m in Sources */,
 				93D7221E1BCD7B4C00821FCD /* TaskTableViewCell.m in Sources */,
@@ -415,7 +421,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				93D721C31BCD79CB00821FCD /* Base */,
-				93C74FCC1BCE0A2E003BEA3C /* en */,
+				933371941BD200A800165D75 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

@@ -24,6 +24,16 @@
     _uncheckImage = [UIImage imageNamed:@"unchecked_checkbox.png"];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[self navigationController] setToolbarHidden:YES animated:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self navigationController] setToolbarHidden:NO animated:animated];
+}
+
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -34,11 +44,22 @@
     PFQuery *query = [[PFQuery alloc] initWithClassName:@"Task"];
     [query whereKey:@"username" equalTo:[[PFUser currentUser] username]];
     [query whereKey:@"taskListId" equalTo:[_taskList valueForKey:@"objectId"]];
+    [query orderByAscending:@"completed"];
+    [query addAscendingOrder:@"deadline"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            NSLog(@"Retrieved %lu tasks", (unsigned long)objects.count);
             NSArray *temp = [[NSArray alloc] initWithArray:objects];
             _tasks = [temp mutableCopy];
+            
+            _taskList[@"totalTask"] = [NSNumber numberWithInt:[_tasks count]];
+            int completed = 0;
+            for(PFObject *task in _tasks) {
+                if([task[@"completed"] boolValue])
+                    completed++;
+            }
+            _taskList[@"completed"] = [NSNumber numberWithInt:completed];
+            [_taskList saveInBackground];
+            
             [self.tableView reloadData];
         } else {
             // Log details of the failure
@@ -76,7 +97,6 @@
         NSDate *today = [NSDate date];
         NSDate *dueday = object[@"deadline"];
         NSTimeInterval secondBetween = [dueday timeIntervalSinceDate:today];
-        NSLog(@"Second between = %f", secondBetween);
         if(secondBetween < 0){
             cell.taskDueLabel.text = @"Late!";
             cell.taskDueLabel.textColor = [UIColor redColor];

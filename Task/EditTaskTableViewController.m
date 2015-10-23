@@ -7,9 +7,12 @@
 //
 
 #import "EditTaskTableViewController.h"
+#import "TaskPhotoViewController.h"
 
 @interface EditTaskTableViewController ()
 @property UIDatePicker *datePicker;
+@property UITapGestureRecognizer* tap;
+@property UIImage *image;
 @end
 
 @implementation EditTaskTableViewController
@@ -45,7 +48,42 @@
         [_completeButton setImage:[UIImage imageNamed:@"checked_checkbox.png"] forState:UIControlStateNormal];
     else [_completeButton setImage:[UIImage imageNamed:@"unchecked_checkbox.png"] forState:UIControlStateNormal];
     
+    _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+    _tap.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:_tap];
+    
 }
+
+-(void)dismissKeyboard:(UITapGestureRecognizer *) sender {
+    [self.view endEditing:YES];
+}
+
+- (IBAction)shareTask:(id)sender {
+    if([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+        [mail setSubject:_task[@"title"]];
+        [mail setMessageBody:_task[@"description"] isHTML:false];
+        [self presentViewController:mail animated:true completion:nil];
+    } else {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"No email found on device" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    
+}
+
+- (IBAction)addImage:(id)sender {
+    [self performSegueWithIdentifier:@"editTaskToTaskPhoto" sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    TaskPhotoViewController *vc = [segue destinationViewController];
+    vc.task = _task;
+}
+
+
 
 -(void)showDate {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -63,14 +101,15 @@
     _task[@"deadline"] = datePicker.date;
     _task[@"taskListId"] = _taskListId;
     _task[@"completed"] = [NSNumber numberWithBool:checked];
+
     [_task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (!error) {
-            [[[UIAlertView alloc] initWithTitle:@"Success" message:@"Information successfully saved" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
         }
         else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+    [[self navigationController] popViewControllerAnimated:YES];
     
 }
 - (IBAction)completeBtn:(id)sender {

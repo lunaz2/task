@@ -21,6 +21,16 @@
     [super viewDidLoad];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[self navigationController] setToolbarHidden:YES animated:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self navigationController] setToolbarHidden:NO animated:animated];
+}
+
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -32,7 +42,6 @@
     [query whereKey:@"username" equalTo:[[PFUser currentUser] username]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            NSLog(@"Retrieved %lu objects", (unsigned long)objects.count);
             NSArray *temp = [[NSArray alloc] initWithArray:objects];
             _taskList = [temp mutableCopy];
             [self.tableView reloadData];
@@ -54,7 +63,7 @@
         PFLogInViewController* logInViewController = [[PFLogInViewController alloc] init];
         PFSignUpViewController* signUpViewController = [[PFSignUpViewController alloc] init];
         
-        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton  | PFLogInFieldsPasswordForgotten | PFLogInFieldsSignUpButton;
+        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton   | PFLogInFieldsSignUpButton;
         
         UILabel *logInTitle = [[UILabel alloc] init];
         logInTitle.text = @"Task Management";
@@ -81,7 +90,11 @@ shouldBeginLogInWithUsername:(NSString *)username
     if(username && password && username.length != 0 && password.length !=0)
         return true;
     
-    [[[UIAlertView alloc] initWithTitle:@"Missing Information" message:@"Fill out all information" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Unable to login. Please try again" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
+    
     return false;
     
 }
@@ -113,7 +126,10 @@ shouldBeginLogInWithUsername:(NSString *)username
     }
     
     if(!informationComplete) {
-        [[[UIAlertView alloc] initWithTitle:@"Missing Information" message:@"Fill out all information" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Missing Information" message:@"Please fill out all information" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
     }
     return informationComplete;
 }
@@ -148,7 +164,7 @@ shouldBeginLogInWithUsername:(NSString *)username
     
     PFObject *object = [_taskList objectAtIndex:indexPath.row];
     cell.taskListTitleLabel.text = object[@"title"];
-    cell.taskListDueLabel.text = @"";
+    cell.taskListDueLabel.text = [NSString stringWithFormat:@"%d out of %d completed", [object[@"completed"] intValue], [object[@"totalTask"] intValue]];
     
     return cell;
 }
@@ -177,7 +193,6 @@ shouldBeginLogInWithUsername:(NSString *)username
         [query whereKey:@"taskListId" equalTo:[object valueForKey:@"objectId"]];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (!error) {
-                NSLog(@"Retrieved %lu objects", (unsigned long)objects.count);
                 NSArray *temp = [[NSArray alloc] initWithArray:objects];
                 for (PFObject *task in temp) {
                     
@@ -208,7 +223,6 @@ shouldBeginLogInWithUsername:(NSString *)username
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         PFObject *object = [_taskList objectAtIndex:indexPath.row];
         vc.taskList = object;
-        NSLog(@"TaskList object sent: %@", object);
         [self.tableView deselectRowAtIndexPath:indexPath animated:true];
     }
     else if([segue.identifier  isEqual: @"editTaskList"]) {

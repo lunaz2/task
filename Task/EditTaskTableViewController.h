@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import <MessageUI/MessageUI.h>
 
-@interface EditTaskTableViewController : UITableViewController {
+@interface EditTaskTableViewController : UITableViewController <UITextFieldDelegate, MFMailComposeViewControllerDelegate>{
     BOOL checked;
 }
 

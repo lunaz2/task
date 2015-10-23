@@ -22,25 +22,30 @@
     else {
         _taskList = [[PFObject alloc] initWithClassName:@"TaskList"];
     }
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[self navigationController] setToolbarHidden:YES animated:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self navigationController] setToolbarHidden:NO animated:animated];
 }
 
 -(IBAction)saveAction:(id)sender {
     _taskList[@"username"] = [[PFUser currentUser] username];
     _taskList[@"title"] = _editTaskListField.text;
-    
     [_taskList saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (!error) {
-            [[[UIAlertView alloc] initWithTitle:@"Success" message:@"Information successfully saved" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
         }
         else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+    
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

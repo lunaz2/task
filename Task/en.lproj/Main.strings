@@ -11,11 +11,11 @@
 /* Class = "UINavigationItem"; title = "Task List"; ObjectID = "A4T-rC-sw2"; */
 "A4T-rC-sw2.title" = "Task List";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "BPG-Fp-pu6"; */
-"BPG-Fp-pu6.text" = "Label";
-
 /* Class = "UITableViewSection"; headerTitle = "Description"; ObjectID = "DcJ-gt-850"; */
 "DcJ-gt-850.headerTitle" = "Description";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "GiN-4T-wbB"; */
+"GiN-4T-wbB.normalTitle" = "Edit";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "JOd-LV-dWv"; */
 "JOd-LV-dWv.text" = "Label";
@@ -26,17 +26,23 @@
 /* Class = "UINavigationItem"; title = "Edit Task List"; ObjectID = "L5u-NL-TRE"; */
 "L5u-NL-TRE.title" = "Edit Task List";
 
+/* Class = "UILabel"; text = "Check If Completed:"; ObjectID = "TGb-YV-h3r"; */
+"TGb-YV-h3r.text" = "Check If Completed:";
+
 /* Class = "UITableViewSection"; headerTitle = "Title"; ObjectID = "Zzp-yy-uJZ"; */
 "Zzp-yy-uJZ.headerTitle" = "Title";
 
 /* Class = "UITableViewSection"; headerTitle = "Title"; ObjectID = "dup-x2-cp9"; */
 "dup-x2-cp9.headerTitle" = "Title";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "nDf-t2-cTl"; */
-"nDf-t2-cTl.text" = "Label";
+/* Class = "UIBarButtonItem"; title = "Task Image"; ObjectID = "heN-YO-CaT"; */
+"heN-YO-CaT.title" = "Task Image";
 
 /* Class = "UINavigationItem"; title = "Edit Task"; ObjectID = "oog-ER-IgL"; */
 "oog-ER-IgL.title" = "Edit Task";
 
 /* Class = "UITextView"; text = "..."; ObjectID = "wmy-mK-wfc"; */
 "wmy-mK-wfc.text" = "...";
+
+/* Class = "UIBarButtonItem"; title = "Share"; ObjectID = "yiW-g0-E2o"; */
+"yiW-g0-E2o.title" = "Share";
