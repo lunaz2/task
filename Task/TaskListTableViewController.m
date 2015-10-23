@@ -224,6 +224,8 @@ shouldBeginLogInWithUsername:(NSString *)username
         PFObject *object = [_taskList objectAtIndex:indexPath.row];
         vc.taskList = object;
         [self.tableView deselectRowAtIndexPath:indexPath animated:true];
+        vc.navigationItem.title = [object objectForKey:@"title"];
+        
     }
     else if([segue.identifier  isEqual: @"editTaskList"]) {
         EditTaskListTableViewController *vc = [segue destinationViewController];
