@@ -37,6 +37,21 @@
 -(IBAction)saveAction:(id)sender {
     _taskList[@"username"] = [[PFUser currentUser] username];
     _taskList[@"title"] = _editTaskListField.text;
+    if(_editTaskListField.text.length == 0){
+        UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error"
+            message:@"Empty title"
+            preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            NSLog(@"typed: %@",error.textFields.firstObject.text);
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [error addTextFieldWithConfigurationHandler:^(UITextField *textField){
+            textField.placeholder = @"Type something";
+            
+        }];
+        [error addAction:ok];
+        [self presentViewController:error animated:YES completion:nil];
+    }else{
     [_taskList saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (!error) {
         }
@@ -46,6 +61,7 @@
     }];
     
     [[self navigationController] popViewControllerAnimated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

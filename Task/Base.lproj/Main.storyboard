@@ -10,7 +10,7 @@
         <!--Edit Task List-->
         <scene sceneID="Chs-Mo-dHZ">
             <objects>
-                <tableViewController id="aiA-jD-Gmj" customClass="EditTaskListTableViewController" sceneMemberID="viewController">
+                <tableViewController title="Edit Task List" id="aiA-jD-Gmj" customClass="EditTaskListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="umC-JK-kX5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
