@@ -83,6 +83,17 @@
     return _tasks.count;
 }
 
+- (IBAction)filterTasksByCompleted {
+    for (int i = 0; i<[_tasks count]; i++){
+        PFObject *object = [_tasks objectAtIndex:i];
+        if(![[object valueForKey:@"completed"] boolValue]){
+            [_tasks removeObject:object];
+            i--;
+        }
+    }
+    [self.tableView reloadData];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TaskTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskTableViewCell" forIndexPath:indexPath];

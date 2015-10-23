@@ -384,6 +384,23 @@
                             <outlet property="delegate" destination="KGb-ym-X2l" id="dXh-RE-2Fl"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="ZMY-aj-vpu"/>
+                        <barButtonItem title="Completed" id="vfb-k2-X71">
+                            <connections>
+                                <action selector="filterTasksByCompleted" destination="KGb-ym-X2l" id="Cj0-Rl-Nrx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="R7f-Gu-6ys"/>
+                        <barButtonItem title="In Progress" id="vg6-7d-6Md"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="OKl-R8-BAA"/>
+                        <barButtonItem title="Late" id="1aU-aQ-eFO"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="nFb-j2-DqR"/>
+                        <barButtonItem title="Recurring" id="eVg-pA-oTw"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="djQ-Dk-Hbu"/>
+                        <barButtonItem title="All" id="hKg-5g-b0E"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="RMy-Sg-X3F"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Task" id="K81-B9-3ZA">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="MpG-Cv-mz7">
                             <connections>
@@ -391,6 +408,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="3XX-U0-FV9" kind="show" identifier="taskToEditTask" id="faf-K5-ZVH"/>
                     </connections>
