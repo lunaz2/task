@@ -392,13 +392,25 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="R7f-Gu-6ys"/>
-                        <barButtonItem title="In Progress" id="vg6-7d-6Md"/>
+                        <barButtonItem title="In Progress" id="vg6-7d-6Md">
+                            <connections>
+                                <action selector="filterTasksByInProgress" destination="KGb-ym-X2l" id="HT3-72-cAQ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="OKl-R8-BAA"/>
-                        <barButtonItem title="Late" id="1aU-aQ-eFO"/>
+                        <barButtonItem title="Late" id="1aU-aQ-eFO">
+                            <connections>
+                                <action selector="filterTasksByLate" destination="KGb-ym-X2l" id="b0Z-8M-rRO"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="nFb-j2-DqR"/>
                         <barButtonItem title="Recurring" id="eVg-pA-oTw"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="djQ-Dk-Hbu"/>
-                        <barButtonItem title="All" id="hKg-5g-b0E"/>
+                        <barButtonItem title="All" id="hKg-5g-b0E">
+                            <connections>
+                                <action selector="showAllTasks" destination="KGb-ym-X2l" id="OfQ-Yj-X9q"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="RMy-Sg-X3F"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Task" id="K81-B9-3ZA">

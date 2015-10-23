@@ -12,6 +12,7 @@
 
 @interface TaskTableViewController ()
 @property NSMutableArray *tasks;
+@property NSMutableArray *allTasks;
 @property UIImage *checkImage;
 @property UIImage *uncheckImage;
 @end
@@ -50,6 +51,7 @@
         if (!error) {
             NSArray *temp = [[NSArray alloc] initWithArray:objects];
             _tasks = [temp mutableCopy];
+            _allTasks = [temp mutableCopy];
             
             _taskList[@"totalTask"] = [NSNumber numberWithInt:[_tasks count]];
             int completed = 0;
@@ -84,6 +86,7 @@
 }
 
 - (IBAction)filterTasksByCompleted {
+    _tasks = [_allTasks mutableCopy];
     for (int i = 0; i<[_tasks count]; i++){
         PFObject *object = [_tasks objectAtIndex:i];
         if(![[object valueForKey:@"completed"] boolValue]){
@@ -91,6 +94,43 @@
             i--;
         }
     }
+    [self.tableView reloadData];
+}
+
+- (IBAction)filterTasksByInProgress {
+    _tasks = [_allTasks mutableCopy];
+    for (int i = 0; i<[_tasks count]; i++){
+        PFObject *object = [_tasks objectAtIndex:i];
+        if([[object valueForKey:@"completed"] boolValue]){
+            [_tasks removeObject:object];
+            i--;
+        }
+    }
+    [self.tableView reloadData];
+}
+
+- (IBAction)filterTasksByLate {
+    _tasks = [_allTasks mutableCopy];
+    for (int i = 0; i<[_tasks count]; i++){
+        PFObject *object = [_tasks objectAtIndex:i];
+        if(![[object valueForKey:@"completed"] boolValue]){
+            NSDate *today = [NSDate date];
+            NSDate *dueday = object[@"deadline"];
+            NSTimeInterval secondBetween = [dueday timeIntervalSinceDate:today];
+            if(secondBetween >= 0){
+                [_tasks removeObject:object];
+                i--;
+            }
+            
+        }else{
+            [_tasks removeObject:object];
+            i--;
+        }
+    }
+    [self.tableView reloadData];
+}
+- (IBAction)showAllTasks {
+    _tasks = _allTasks;
     [self.tableView reloadData];
 }
 
