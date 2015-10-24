@@ -97,6 +97,18 @@
     [self.tableView reloadData];
 }
 
+- (IBAction)filterTasksByRecurring {
+    _tasks = [_allTasks mutableCopy];
+    for (int i = 0; i<[_tasks count]; i++){
+        PFObject *object = [_tasks objectAtIndex:i];
+        if(![[object valueForKey:@"isRecurring"] boolValue]){
+            [_tasks removeObject:object];
+            i--;
+        }
+    }
+    [self.tableView reloadData];
+}
+
 - (IBAction)filterTasksByInProgress {
     _tasks = [_allTasks mutableCopy];
     for (int i = 0; i<[_tasks count]; i++){
