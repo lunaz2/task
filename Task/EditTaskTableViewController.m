@@ -20,8 +20,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _repeatingSwitch.on = NO;
     checked = NO;
+    _repeatingSlider.enabled = NO;
+    _repeatingUnit.enabled = NO;
+    _repeatingSliderLabel.hidden = YES;
     datePicker = [[UIDatePicker alloc] init];
     datePicker.datePickerMode = UIDatePickerModeDateAndTime;
     [_editTaskDueField setInputView:datePicker];
@@ -39,6 +42,15 @@
         [datePicker setDate:_task[@"deadline"]];
         [self showDate];
         checked = [[_task objectForKey:@"completed"] boolValue];
+        _repeatingSwitch.on = [[_task objectForKey:@"isRecurring"] boolValue];
+        if(_repeatingSwitch.isOn){
+            _repeatingSlider.enabled = YES;
+            _repeatingUnit.enabled = YES;
+            _repeatingSliderLabel.hidden = NO;
+            [_repeatingSlider setValue:[[_task objectForKey:@"recurringPeriod"] intValue] animated:YES];
+            _repeatingSliderLabel.text = [NSString stringWithFormat:@"%d",[[_task objectForKey:@"recurringPeriod"] intValue]];
+            _repeatingUnit.selectedSegmentIndex = [[_task objectForKey:@"recurringUnit"] intValue];
+        }
     }
     else {
         _task = [[PFObject alloc] initWithClassName:@"Task"];
@@ -101,6 +113,9 @@
     _task[@"deadline"] = datePicker.date;
     _task[@"taskListId"] = _taskListId;
     _task[@"completed"] = [NSNumber numberWithBool:checked];
+    _task[@"isRecurring"] = [NSNumber numberWithBool:_repeatingSwitch.isOn];
+    _task[@"recurringPeriod"] = [NSNumber numberWithInt:_repeatingSlider.value];
+    _task[@"recurringUnit"] = [NSNumber numberWithInt:_repeatingUnit.selectedSegmentIndex];
 
     [_task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (!error) {
@@ -128,6 +143,20 @@
         int sliderValue = lroundf(_repeatingSlider.value);
         [_repeatingSlider setValue:sliderValue animated:YES];
         _repeatingSliderLabel.text = [NSString stringWithFormat:@"%d",sliderValue];
+    }
+}
+
+-(IBAction)switchValueChanged:(id)sender{
+    if(sender == _repeatingSwitch){
+        if(_repeatingSwitch.isOn){
+            _repeatingSlider.enabled = YES;
+            _repeatingUnit.enabled = YES;
+            _repeatingSliderLabel.hidden = NO;
+        }else{
+            _repeatingSlider.enabled = NO;
+            _repeatingUnit.enabled = NO;
+            _repeatingSliderLabel.hidden = YES;
+        }
     }
 }
 

@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *completeButton;
 @property (weak, nonatomic) IBOutlet UISlider *repeatingSlider;
 @property (weak, nonatomic) IBOutlet UILabel *repeatingSliderLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *repeatingSwitch;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *repeatingUnit;
 
 @property PFObject *task;
 @property NSString *taskListId;

@@ -482,6 +482,9 @@
                                                             <include reference="B04-GC-cTa"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="switchValueChanged:" destination="3XX-U0-FV9" eventType="valueChanged" id="kO7-Vz-Tfg"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C05-le-YSp">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -700,6 +703,8 @@
                         <outlet property="editTaskTitleField" destination="Uop-1z-iht" id="Htu-Ec-HaF"/>
                         <outlet property="repeatingSlider" destination="cwN-7i-tbD" id="H5v-MU-4PG"/>
                         <outlet property="repeatingSliderLabel" destination="C05-le-YSp" id="vJU-Jp-81T"/>
+                        <outlet property="repeatingSwitch" destination="siO-hA-Nbc" id="0aU-gO-Jny"/>
+                        <outlet property="repeatingUnit" destination="aOS-xq-90d" id="4Sg-fZ-eFa"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Hf-HL-vnT" userLabel="First Responder" sceneMemberID="firstResponder"/>
