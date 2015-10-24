@@ -15,7 +15,9 @@
 @implementation EditTaskListTableViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    
     if(_taskList != nil) {
         _editTaskListField.text = _taskList[@"title"];
     }
@@ -23,6 +25,8 @@
         _taskList = [[PFObject alloc] initWithClassName:@"TaskList"];
     }
 }
+
+
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
