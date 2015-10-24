@@ -21,4 +21,5 @@
 
 @property PFObject *task;
 @property NSString *taskListId;
+-(IBAction)setRecurring:(id)sender;
 @end

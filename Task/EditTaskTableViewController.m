@@ -123,6 +123,26 @@
     }
 }
 
+-(IBAction) setRecurring:(id)sender{
+    UIButton *button = (UIButton *) sender;
+    UIAlertController *repeatDialog = [UIAlertController alertControllerWithTitle:@"Repeating task"
+        message:@"Set the frequency of this task"
+        preferredStyle:UIAlertControllerStyleAlert
+    ];
+    
+    [repeatDialog addTextFieldWithConfigurationHandler:^(UITextField *textField){
+        textField.placeholder = @"Time integer";
+        textField.keyboardType = UIKeyboardTypePhonePad;
+    }];
+    UIAlertAction *week = [UIAlertAction actionWithTitle:@"Week" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        button.titleLabel.text = [NSString stringWithFormat:@"%@ Weeks", repeatDialog.textFields.firstObject.text];
+        NSLog(@"%@ Week(s)", repeatDialog.textFields.firstObject.text);
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [repeatDialog addAction:week];
+    [self presentViewController:repeatDialog animated:YES completion:nil];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
