@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *editTaskDescTextView;
 @property (weak, nonatomic) IBOutlet UITextField *editTaskDueField;
 @property (weak, nonatomic) IBOutlet UIButton *completeButton;
+@property (weak, nonatomic) IBOutlet UISlider *repeatingSlider;
+@property (weak, nonatomic) IBOutlet UILabel *repeatingSliderLabel;
 
 @property PFObject *task;
 @property NSString *taskListId;

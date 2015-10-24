@@ -123,6 +123,14 @@
     }
 }
 
+-(IBAction)sliderValueChanged:(id)sender{
+    if(sender == _repeatingSlider){
+        int sliderValue = lroundf(_repeatingSlider.value);
+        [_repeatingSlider setValue:sliderValue animated:YES];
+        _repeatingSliderLabel.text = [NSString stringWithFormat:@"%d",sliderValue];
+    }
+}
+
 -(IBAction) setRecurring:(id)sender{
     UIButton *button = (UIButton *) sender;
     UIAlertController *repeatDialog = [UIAlertController alertControllerWithTitle:@"Repeating task"
