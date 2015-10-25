@@ -13,6 +13,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *taskTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *taskDueLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *checkView;
-
+@property (weak, nonatomic) IBOutlet UIImageView *repeatIcon;
 
 @end

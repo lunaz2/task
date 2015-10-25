@@ -113,7 +113,7 @@
     _tasks = [_allTasks mutableCopy];
     for (int i = 0; i<[_tasks count]; i++){
         PFObject *object = [_tasks objectAtIndex:i];
-        if([[object valueForKey:@"completed"] boolValue]){
+        if([[object valueForKey:@"completed"] boolValue] && ![[object valueForKey:@"isRecurring"] boolValue]){
             [_tasks removeObject:object];
             i--;
         }
@@ -153,13 +153,62 @@
     PFObject *object = [_tasks objectAtIndex:indexPath.row];
     
     cell.taskTitleLabel.text = object[@"title"];
+    cell.repeatIcon.hidden = YES;
+    
+    bool isRecurring = [[object valueForKey:@"isRecurring"] boolValue];
+    NSDate *today = [NSDate date];
+    NSDate *dueday = object[@"deadline"];
+    NSTimeInterval secondBetween = [dueday timeIntervalSinceDate:today];
+    if(isRecurring){
+        cell.repeatIcon.hidden = NO;
+        if(secondBetween < 0){
+            while(secondBetween < 0){
+                int period = [[object valueForKey:@"recurringPeriod"] intValue];
+                int unit = [[object valueForKey:@"recurringUnit"] intValue];
+                int seconds = 0;
+                switch(unit){
+                    case 0:
+                        seconds = period * 60;
+                        break;
+                    case 1:
+                        seconds = period * 60 * 60;
+                        break;
+                    case 2:
+                        seconds = period * 60 * 60 * 24;
+                        break;
+                    case 3:
+                        seconds = period * 60 * 60 * 24 * 7;
+                        break;
+                    case 4:
+                        seconds = period * 60 * 60 * 24 * 31;
+                        break;
+                    case 5:
+                        seconds = period * 60 * 60 * 24 * 365;
+                        break;
+                    default:
+                        break;
+                }
+                dueday = [dueday dateByAddingTimeInterval:seconds];
+                secondBetween = [dueday timeIntervalSinceDate:today];
+                object[@"deadline"] = dueday;
+            }
+            [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if(error) {
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+        }
+        
+    }
     
     if(![[object valueForKey:@"completed"] boolValue]) {
         cell.checkView.hidden = YES;
         cell.taskDueLabel.hidden = NO;
+
         NSDate *today = [NSDate date];
         NSDate *dueday = object[@"deadline"];
         NSTimeInterval secondBetween = [dueday timeIntervalSinceDate:today];
+
         if(secondBetween < 0){
             cell.taskDueLabel.text = @"Late!";
             cell.taskDueLabel.textColor = [UIColor redColor];
@@ -184,8 +233,7 @@
         cell.checkView.hidden = NO;
         cell.taskDueLabel.hidden = YES;
     }
-        
-    return cell;
+        return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
