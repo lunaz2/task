@@ -245,20 +245,38 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        PFObject *object = [_tasks objectAtIndex:indexPath.row];
+}
+
+-(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView
+editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    PFObject *object = [_tasks objectAtIndex:indexPath.row];
+    UITableViewRowAction *complete = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Completed" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        object[@"completed"] = [NSNumber numberWithBool: ![object[@"completed"] boolValue]];
+        [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(succeeded) {
+                [self.tableView reloadData];
+            }
+            else {
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }];
+    complete.backgroundColor = [UIColor orangeColor];
+    
+    UITableViewRowAction *delete = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if(!error) {
-                
+            if(succeeded) {
+                [self.tableView reloadData];
             }
             else {
                 NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
         }];
         [_tasks removeObjectAtIndex:indexPath.row];
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
+    }];
+    
+    return @[complete, delete];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
