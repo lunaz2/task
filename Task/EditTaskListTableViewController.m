@@ -27,6 +27,10 @@
 }
 
 
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    [theTextField resignFirstResponder];
+    return YES;
+}
 
 
 -(void)viewWillAppear:(BOOL)animated {

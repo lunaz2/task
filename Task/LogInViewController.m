@@ -55,6 +55,16 @@
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    if (theTextField == _usernameField) {
+        [_passwordField becomeFirstResponder];
+    } else if (theTextField == _passwordField) {
+        [_passwordField resignFirstResponder];
+        [self logIn:self];
+    }
+    return YES;
+}
+
 /*
 #pragma mark - Navigation
 

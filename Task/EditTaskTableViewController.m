@@ -86,6 +86,17 @@
     
 }
 
+-(void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    if(result == MFMailComposeResultFailed) {
+        NSLog(@"email fail");
+    }
+    else if (result == MFMailComposeResultSent) {
+        NSLog(@"email sent");
+    }
+    
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
 - (IBAction)addImage:(id)sender {
     [self performSegueWithIdentifier:@"editTaskToTaskPhoto" sender:nil];
 }

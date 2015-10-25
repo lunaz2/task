@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface EditTaskListTableViewController : UITableViewController
+@interface EditTaskListTableViewController : UITableViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *editTaskListField;
 @property PFObject *taskList;
 
