@@ -13,13 +13,17 @@
 
 @interface TaskListTableViewController ()
 @property NSMutableArray *taskList;
+@property UIActivityIndicatorView *activityIndicator;
 @end
 
 @implementation TaskListTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _activityIndicator.center = self.view.center;
+    _activityIndicator.hidesWhenStopped = YES;
+    _activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    _activityIndicator.color = [UIColor grayColor];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -35,8 +39,8 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [self loginSetup];
+    [_activityIndicator startAnimating];
+    [self fetchAllObjects];
 }
 
 -(void) fetchAllObjects{
@@ -46,6 +50,7 @@
         if (!error) {
             NSArray *temp = [[NSArray alloc] initWithArray:objects];
             _taskList = [temp mutableCopy];
+            [_activityIndicator stopAnimating];
             [self.tableView reloadData];
         } else {
             // Log details of the failure
@@ -57,97 +62,9 @@
 
 - (IBAction)logoutAction:(id)sender {
     [PFUser logOut];
-    [self loginSetup];
+    [[self navigationController] popToRootViewControllerAnimated:YES];
 }
 
--(void) loginSetup {
-    if(PFUser.currentUser == nil) {
-        PFLogInViewController* logInViewController = [[PFLogInViewController alloc] init];
-        PFSignUpViewController* signUpViewController = [[PFSignUpViewController alloc] init];
-        
-        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton   | PFLogInFieldsSignUpButton;
-        
-        UILabel *logInTitle = [[UILabel alloc] init];
-        logInTitle.text = @"Task Management";
-        logInViewController.logInView.logo = logInTitle;
-        logInViewController.delegate = self;
-        
-        UILabel *signUpTitle = [[UILabel alloc] init];
-        signUpTitle.text = @"Task Management";
-        signUpViewController.signUpView.logo = signUpTitle;
-        signUpViewController.delegate = self;
-        
-        logInViewController.signUpController = signUpViewController;
-        [self presentViewController:logInViewController animated:true completion:nil];
-    } else {
-        [self fetchAllObjects];
-    }
-}
-
-#pragma mark - Log In Delegate
-
-- (BOOL)logInViewController:(PFLogInViewController *)logInController
-shouldBeginLogInWithUsername:(NSString *)username
-                   password:(NSString *)password {
-    if(username && password && username.length != 0 && password.length !=0)
-        return true;
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Unable to login. Please try again" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:ok];
-    [self presentViewController:alert animated:YES completion:nil];
-    
-    return false;
-    
-}
-
-- (void)logInViewController:(PFLogInViewController *)controller
-               didLogInUser:(PFUser *)user {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-    NSLog(@"Failed to log in...");
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Sign Up Delegate
-
--(BOOL) signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
-    BOOL informationComplete = YES;
-    for(id key in info) {
-        NSString *field = [info objectForKey:key];
-        if(!field || field.length == 0) {
-            informationComplete = NO;
-            break;
-        }
-    }
-    
-    if(!informationComplete) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Missing Information" message:@"Please fill out all information" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-        [alert addAction:ok];
-        [self presentViewController:alert animated:YES completion:nil];
-    }
-    return informationComplete;
-}
-
-- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)signUpViewController:(PFSignUpViewController *)signUpController
-    didFailToSignUpWithError:(PFUI_NULLABLE NSError *)error {
-    NSLog(@"Failed to sign up...");
-}
-
-- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
-    NSLog(@"Cancel sign up...");
-}
 
 
 #pragma mark - Table view data source

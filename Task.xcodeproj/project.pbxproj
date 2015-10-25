@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		933371A01BD2124C00165D75 /* TaskPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9333719F1BD2124C00165D75 /* TaskPhotoViewController.m */; settings = {ASSET_TAGS = (); }; };
+		93544D051BDC4A1000B24A42 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93544D041BDC4A1000B24A42 /* LogInViewController.m */; settings = {ASSET_TAGS = (); }; };
+		93544D081BDC4A2700B24A42 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93544D071BDC4A2700B24A42 /* SignUpViewController.m */; settings = {ASSET_TAGS = (); }; };
 		93D721BB1BCD79CB00821FCD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D721BA1BCD79CB00821FCD /* main.m */; };
 		93D721BE1BCD79CB00821FCD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D721BD1BCD79CB00821FCD /* AppDelegate.m */; };
 		93D721C41BCD79CB00821FCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D721C21BCD79CB00821FCD /* Main.storyboard */; };
@@ -60,6 +62,10 @@
 		933371941BD200A800165D75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		9333719E1BD2124C00165D75 /* TaskPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskPhotoViewController.h; sourceTree = "<group>"; };
 		9333719F1BD2124C00165D75 /* TaskPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskPhotoViewController.m; sourceTree = "<group>"; };
+		93544D031BDC4A1000B24A42 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
+		93544D041BDC4A1000B24A42 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		93544D061BDC4A2700B24A42 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		93544D071BDC4A2700B24A42 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		93D721B61BCD79CB00821FCD /* Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Task.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D721BA1BCD79CB00821FCD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		93D721BC1BCD79CB00821FCD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -172,6 +178,10 @@
 				93D721BC1BCD79CB00821FCD /* AppDelegate.h */,
 				93D721BD1BCD79CB00821FCD /* AppDelegate.m */,
 				93D721C21BCD79CB00821FCD /* Main.storyboard */,
+				93544D031BDC4A1000B24A42 /* LogInViewController.h */,
+				93544D041BDC4A1000B24A42 /* LogInViewController.m */,
+				93544D061BDC4A2700B24A42 /* SignUpViewController.h */,
+				93544D071BDC4A2700B24A42 /* SignUpViewController.m */,
 				93D7220D1BCD7A9F00821FCD /* TaskListTableViewController.h */,
 				93D7220E1BCD7A9F00821FCD /* TaskListTableViewController.m */,
 				93D722131BCD7ABB00821FCD /* TaskTableViewController.h */,
@@ -374,12 +384,14 @@
 			files = (
 				93D722121BCD7AAC00821FCD /* EditTaskListTableViewController.m in Sources */,
 				93D721BE1BCD79CB00821FCD /* AppDelegate.m in Sources */,
+				93544D051BDC4A1000B24A42 /* LogInViewController.m in Sources */,
 				933371A01BD2124C00165D75 /* TaskPhotoViewController.m in Sources */,
 				93D722151BCD7ABB00821FCD /* TaskTableViewController.m in Sources */,
 				93D7221B1BCD7B4000821FCD /* TaskListTableViewCell.m in Sources */,
 				93D7221E1BCD7B4C00821FCD /* TaskTableViewCell.m in Sources */,
 				93D721BB1BCD79CB00821FCD /* main.m in Sources */,
 				93D722181BCD7ACA00821FCD /* EditTaskTableViewController.m in Sources */,
+				93544D081BDC4A2700B24A42 /* SignUpViewController.m in Sources */,
 				93D7220F1BCD7A9F00821FCD /* TaskListTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

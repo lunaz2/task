@@ -10,5 +10,6 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 
-@interface TaskListTableViewController : UITableViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+@interface TaskListTableViewController : UITableViewController
+
 @end
