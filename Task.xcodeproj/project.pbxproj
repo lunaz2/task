@@ -193,34 +193,11 @@
 				93D721BC1BCD79CB00821FCD /* AppDelegate.h */,
 				93D721BD1BCD79CB00821FCD /* AppDelegate.m */,
 				93D721C21BCD79CB00821FCD /* Main.storyboard */,
-				93544D031BDC4A1000B24A42 /* LogInViewController.h */,
-				93544D041BDC4A1000B24A42 /* LogInViewController.m */,
-				93544D061BDC4A2700B24A42 /* SignUpViewController.h */,
-				93544D071BDC4A2700B24A42 /* SignUpViewController.m */,
-				93D7220D1BCD7A9F00821FCD /* TaskListTableViewController.h */,
-				93D7220E1BCD7A9F00821FCD /* TaskListTableViewController.m */,
-				93D722131BCD7ABB00821FCD /* TaskTableViewController.h */,
-				93D722141BCD7ABB00821FCD /* TaskTableViewController.m */,
-				94857BC71BDDC63600BE8998 /* EditNoteTableViewController.h */,
-				94857BC81BDDC63600BE8998 /* EditNoteTableViewController.m */,
-				94857BC91BDDC63600BE8998 /* NotesTableViewController.h */,
-				94857BCA1BDDC63600BE8998 /* NotesTableViewController.m */,
-				94857BCB1BDDC63600BE8998 /* NoteTableViewCell.h */,
-				94857BCC1BDDC63600BE8998 /* NoteTableViewCell.m */,
-				93D722101BCD7AAC00821FCD /* EditTaskListTableViewController.h */,
-				93D722111BCD7AAC00821FCD /* EditTaskListTableViewController.m */,
-				93D722161BCD7ACA00821FCD /* EditTaskTableViewController.h */,
-				93D722171BCD7ACA00821FCD /* EditTaskTableViewController.m */,
-				930B62731BDD6F060025B868 /* TaskImageCollectionViewController.h */,
-				930B62741BDD6F060025B868 /* TaskImageCollectionViewController.m */,
-				9333719E1BD2124C00165D75 /* TaskPhotoViewController.h */,
-				9333719F1BD2124C00165D75 /* TaskPhotoViewController.m */,
-				93D722191BCD7B4000821FCD /* TaskListTableViewCell.h */,
-				93D7221A1BCD7B4000821FCD /* TaskListTableViewCell.m */,
-				93D7221C1BCD7B4C00821FCD /* TaskTableViewCell.h */,
-				93D7221D1BCD7B4C00821FCD /* TaskTableViewCell.m */,
-				930B62761BDD72250025B868 /* CollectionViewCell.h */,
-				930B62771BDD72250025B868 /* CollectionViewCell.m */,
+				94E7281F1BDE9A0B007751CE /* LoginSignup */,
+				94E728201BDE9C11007751CE /* TaskList */,
+				94E728221BDE9C45007751CE /* Task */,
+				94E728211BDE9C27007751CE /* Notes */,
+				94E728231BDE9C8F007751CE /* Photos */,
 				93D721C51BCD79CB00821FCD /* Assets.xcassets */,
 				93D721C71BCD79CB00821FCD /* LaunchScreen.storyboard */,
 				93D721CA1BCD79CB00821FCD /* Info.plist */,
@@ -276,6 +253,69 @@
 				93D721F01BCD79F500821FCD /* ParseUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		94E7281F1BDE9A0B007751CE /* LoginSignup */ = {
+			isa = PBXGroup;
+			children = (
+				93544D031BDC4A1000B24A42 /* LogInViewController.h */,
+				93544D041BDC4A1000B24A42 /* LogInViewController.m */,
+				93544D061BDC4A2700B24A42 /* SignUpViewController.h */,
+				93544D071BDC4A2700B24A42 /* SignUpViewController.m */,
+			);
+			name = LoginSignup;
+			sourceTree = "<group>";
+		};
+		94E728201BDE9C11007751CE /* TaskList */ = {
+			isa = PBXGroup;
+			children = (
+				93D722191BCD7B4000821FCD /* TaskListTableViewCell.h */,
+				93D7221A1BCD7B4000821FCD /* TaskListTableViewCell.m */,
+				93D722101BCD7AAC00821FCD /* EditTaskListTableViewController.h */,
+				93D722111BCD7AAC00821FCD /* EditTaskListTableViewController.m */,
+				93D7220D1BCD7A9F00821FCD /* TaskListTableViewController.h */,
+				93D7220E1BCD7A9F00821FCD /* TaskListTableViewController.m */,
+			);
+			name = TaskList;
+			sourceTree = "<group>";
+		};
+		94E728211BDE9C27007751CE /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				94857BC71BDDC63600BE8998 /* EditNoteTableViewController.h */,
+				94857BC81BDDC63600BE8998 /* EditNoteTableViewController.m */,
+				94857BC91BDDC63600BE8998 /* NotesTableViewController.h */,
+				94857BCA1BDDC63600BE8998 /* NotesTableViewController.m */,
+				94857BCB1BDDC63600BE8998 /* NoteTableViewCell.h */,
+				94857BCC1BDDC63600BE8998 /* NoteTableViewCell.m */,
+			);
+			name = Notes;
+			sourceTree = "<group>";
+		};
+		94E728221BDE9C45007751CE /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				93D722161BCD7ACA00821FCD /* EditTaskTableViewController.h */,
+				93D722171BCD7ACA00821FCD /* EditTaskTableViewController.m */,
+				93D722131BCD7ABB00821FCD /* TaskTableViewController.h */,
+				93D722141BCD7ABB00821FCD /* TaskTableViewController.m */,
+				93D7221C1BCD7B4C00821FCD /* TaskTableViewCell.h */,
+				93D7221D1BCD7B4C00821FCD /* TaskTableViewCell.m */,
+			);
+			name = Task;
+			sourceTree = "<group>";
+		};
+		94E728231BDE9C8F007751CE /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				930B62731BDD6F060025B868 /* TaskImageCollectionViewController.h */,
+				930B62741BDD6F060025B868 /* TaskImageCollectionViewController.m */,
+				9333719E1BD2124C00165D75 /* TaskPhotoViewController.h */,
+				9333719F1BD2124C00165D75 /* TaskPhotoViewController.m */,
+				930B62761BDD72250025B868 /* CollectionViewCell.h */,
+				930B62771BDD72250025B868 /* CollectionViewCell.m */,
+			);
+			name = Photos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

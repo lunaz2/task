@@ -14,5 +14,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *taskDueLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *checkView;
 @property (weak, nonatomic) IBOutlet UIImageView *repeatIcon;
+@property (weak, nonatomic) IBOutlet UIButton *notesButton;
+@property (weak, nonatomic) IBOutlet UIButton *photosButton;
 
 @end

@@ -51,11 +51,14 @@
             _notes = [temp mutableCopy];
             [_activityIndicator stopAnimating];
             [self.tableView reloadData];
+            _task[@"totalNotes"] = [NSNumber numberWithInt:[_notes count]];
+            [_task saveInBackground];
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

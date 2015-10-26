@@ -10,4 +10,5 @@
 #import <Parse/Parse.h>
 
 @interface TaskImageCollectionViewController : UICollectionViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
-@property NSString *taskId;@end
+@property NSString *taskId;
+@end

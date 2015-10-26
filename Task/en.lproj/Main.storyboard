@@ -1279,7 +1279,7 @@
                                                         <action selector="viewNotesTable:" destination="3XX-U0-FV9" eventType="touchDown" id="I7Z-ur-pWP"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300 Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pg-Mf-Hc6">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pg-Mf-Hc6">
                                                     <rect key="frame" x="8" y="11" width="114" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="114" id="Bv9-nl-CjU"/>
@@ -1385,6 +1385,8 @@
                         <outlet property="editTaskDescTextView" destination="S5Z-px-1wL" id="CZ2-0e-o5m"/>
                         <outlet property="editTaskDueField" destination="2Sf-2f-n7v" id="JNk-5W-Y14"/>
                         <outlet property="editTaskTitleField" destination="Uop-1z-iht" id="Htu-Ec-HaF"/>
+                        <outlet property="notesCounter" destination="4pg-Mf-Hc6" id="GLx-DS-fto"/>
+                        <outlet property="photosCounter" destination="iOU-FL-PDV" id="B88-fP-2ge"/>
                         <outlet property="repeatingSlider" destination="cwN-7i-tbD" id="H5v-MU-4PG"/>
                         <outlet property="repeatingSliderLabel" destination="C05-le-YSp" id="vJU-Jp-81T"/>
                         <outlet property="repeatingSwitch" destination="siO-hA-Nbc" id="0aU-gO-Jny"/>
@@ -1651,9 +1653,9 @@
         <image name="unchecked_checkbox" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="faf-K5-ZVH"/>
         <segue reference="JDQ-6f-9YS"/>
         <segue reference="Zmd-JF-QnS"/>
-        <segue reference="uz7-jn-kVU"/>
+        <segue reference="faf-K5-ZVH"/>
+        <segue reference="asb-P0-oiY"/>
     </inferredMetricsTieBreakers>
 </document>

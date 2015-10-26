@@ -54,6 +54,7 @@
             _repeatingSliderLabel.text = [NSString stringWithFormat:@"%d",[[_task objectForKey:@"recurringPeriod"] intValue]];
             _repeatingUnit.selectedSegmentIndex = [[_task objectForKey:@"recurringUnit"] intValue];
         }
+        _notesCounter.text = [NSString stringWithFormat:@"%d Notes", [[_task valueForKey:@"totalNotes"] intValue]];
     }
     else {
         _task = [[PFObject alloc] initWithClassName:@"Task"];
@@ -188,6 +189,7 @@
     }
 }
 
+/*
 -(IBAction) setRecurring:(id)sender{
     UIButton *button = (UIButton *) sender;
     UIAlertController *repeatDialog = [UIAlertController alertControllerWithTitle:@"Repeating task"
@@ -207,6 +209,7 @@
     [repeatDialog addAction:week];
     [self presentViewController:repeatDialog animated:YES completion:nil];
 }
+ */
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *repeatingSwitch;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *repeatingUnit;
 @property (weak, nonatomic) IBOutlet UILabel *notesCounter;
+@property (weak, nonatomic) IBOutlet UILabel *photosCounter;
 
 @property PFObject *task;
 @property NSString *taskListId;
