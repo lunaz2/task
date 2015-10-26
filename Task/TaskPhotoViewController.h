@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface TaskPhotoViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate>
+@interface TaskPhotoViewController : UIViewController <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *noImageLabel;
-@property PFObject *task;
+@property UIImage *image;
+@property PFFile *imageFile;
 @end

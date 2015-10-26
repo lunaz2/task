@@ -7,7 +7,7 @@
 //
 
 #import "EditTaskTableViewController.h"
-#import "TaskPhotoViewController.h"
+#import "TaskImageCollectionViewController.h"
 
 @interface EditTaskTableViewController ()
 @property UIDatePicker *datePicker;
@@ -97,13 +97,15 @@
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
-- (IBAction)addImage:(id)sender {
-    [self performSegueWithIdentifier:@"editTaskToTaskPhoto" sender:nil];
+- (IBAction)viewImage:(id)sender {
+    [self performSegueWithIdentifier:@"TaskDetailToTaskImage" sender:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    TaskPhotoViewController *vc = [segue destinationViewController];
-    vc.task = _task;
+    if([segue.identifier  isEqual: @"TaskDetailToTaskImage"]) {
+        TaskImageCollectionViewController *vc = [segue destinationViewController];
+        vc.taskId = [_task valueForKey:@"objectId"];
+    }
 }
 
 
