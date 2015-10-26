@@ -8,6 +8,9 @@
 
 #import "EditTaskTableViewController.h"
 #import "TaskImageCollectionViewController.h"
+#import "NotesTableViewController.h"
+#import "EditNoteTableViewController.h"
+
 
 @interface EditTaskTableViewController ()
 @property UIDatePicker *datePicker;
@@ -105,10 +108,22 @@
     if([segue.identifier  isEqual: @"TaskDetailToTaskImage"]) {
         TaskImageCollectionViewController *vc = [segue destinationViewController];
         vc.taskId = [_task valueForKey:@"objectId"];
+    }else if([segue.identifier  isEqual: @"editTaskToNotesTable"]) {
+        NotesTableViewController *vc = [segue destinationViewController];
+        vc.task = _task;
+    }else if([segue.identifier  isEqual: @"editTaskToEditNote"]) {
+        EditNoteTableViewController *vc = [segue destinationViewController];
+        vc.task = _task;
     }
 }
 
+-(IBAction)viewNotesTable:(id)sender{
+    [self performSegueWithIdentifier:@"editTaskToNotesTable" sender:nil];
+}
 
+-(IBAction)addNote:(id)sender {
+    [self performSegueWithIdentifier:@"editTaskToEditNote" sender:nil];
+}
 
 -(void)showDate {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

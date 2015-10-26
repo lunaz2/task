@@ -41,6 +41,9 @@
 		93D722181BCD7ACA00821FCD /* EditTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D722171BCD7ACA00821FCD /* EditTaskTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		93D7221B1BCD7B4000821FCD /* TaskListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7221A1BCD7B4000821FCD /* TaskListTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		93D7221E1BCD7B4C00821FCD /* TaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7221D1BCD7B4C00821FCD /* TaskTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		94857BCD1BDDC63600BE8998 /* EditNoteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94857BC81BDDC63600BE8998 /* EditNoteTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		94857BCE1BDDC63600BE8998 /* NotesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94857BCA1BDDC63600BE8998 /* NotesTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		94857BCF1BDDC63600BE8998 /* NoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94857BCC1BDDC63600BE8998 /* NoteTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +117,12 @@
 		93D7221D1BCD7B4C00821FCD /* TaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskTableViewCell.m; sourceTree = "<group>"; };
 		946415071BDB3B7A000A8EFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		946415081BDB3B7A000A8EFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		94857BC71BDDC63600BE8998 /* EditNoteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteTableViewController.h; sourceTree = "<group>"; };
+		94857BC81BDDC63600BE8998 /* EditNoteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteTableViewController.m; sourceTree = "<group>"; };
+		94857BC91BDDC63600BE8998 /* NotesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesTableViewController.h; sourceTree = "<group>"; };
+		94857BCA1BDDC63600BE8998 /* NotesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesTableViewController.m; sourceTree = "<group>"; };
+		94857BCB1BDDC63600BE8998 /* NoteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTableViewCell.h; sourceTree = "<group>"; };
+		94857BCC1BDDC63600BE8998 /* NoteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +201,12 @@
 				93D7220E1BCD7A9F00821FCD /* TaskListTableViewController.m */,
 				93D722131BCD7ABB00821FCD /* TaskTableViewController.h */,
 				93D722141BCD7ABB00821FCD /* TaskTableViewController.m */,
+				94857BC71BDDC63600BE8998 /* EditNoteTableViewController.h */,
+				94857BC81BDDC63600BE8998 /* EditNoteTableViewController.m */,
+				94857BC91BDDC63600BE8998 /* NotesTableViewController.h */,
+				94857BCA1BDDC63600BE8998 /* NotesTableViewController.m */,
+				94857BCB1BDDC63600BE8998 /* NoteTableViewCell.h */,
+				94857BCC1BDDC63600BE8998 /* NoteTableViewCell.m */,
 				93D722101BCD7AAC00821FCD /* EditTaskListTableViewController.h */,
 				93D722111BCD7AAC00821FCD /* EditTaskListTableViewController.m */,
 				93D722161BCD7ACA00821FCD /* EditTaskTableViewController.h */,
@@ -399,12 +414,15 @@
 				93D722151BCD7ABB00821FCD /* TaskTableViewController.m in Sources */,
 				93D7221B1BCD7B4000821FCD /* TaskListTableViewCell.m in Sources */,
 				93D7221E1BCD7B4C00821FCD /* TaskTableViewCell.m in Sources */,
+				94857BCF1BDDC63600BE8998 /* NoteTableViewCell.m in Sources */,
 				93D721BB1BCD79CB00821FCD /* main.m in Sources */,
+				94857BCE1BDDC63600BE8998 /* NotesTableViewController.m in Sources */,
 				93D722181BCD7ACA00821FCD /* EditTaskTableViewController.m in Sources */,
 				93544D081BDC4A2700B24A42 /* SignUpViewController.m in Sources */,
 				93D7220F1BCD7A9F00821FCD /* TaskListTableViewController.m in Sources */,
 				930B62781BDD72250025B868 /* CollectionViewCell.m in Sources */,
 				930B62751BDD6F060025B868 /* TaskImageCollectionViewController.m in Sources */,
+				94857BCD1BDDC63600BE8998 /* EditNoteTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

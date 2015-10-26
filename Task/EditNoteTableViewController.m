@@ -22,7 +22,7 @@
         _noteContent.text = _note[@"noteContent"];
     }
     else {
-        _note = [[PFObject alloc] initWithClassName:@"TaskList"];
+        _note = [[PFObject alloc] initWithClassName:@"Note"];
     }
 }
 
