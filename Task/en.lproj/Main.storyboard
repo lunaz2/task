@@ -267,9 +267,6 @@
                                                     <rect key="frame" x="8" y="7" width="584" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <variation key="heightClass=regular" misplaced="YES">
-                                                        <rect key="frame" x="8" y="14" width="584" height="17"/>
-                                                    </variation>
                                                     <connections>
                                                         <outlet property="delegate" destination="aiA-jD-Gmj" id="ZNJ-SK-UHS"/>
                                                     </connections>
@@ -279,7 +276,9 @@
                                                 <constraint firstItem="os8-ZC-Oy8" firstAttribute="centerY" secondItem="Esh-G2-SHn" secondAttribute="centerY" id="3km-sT-ZRp"/>
                                                 <constraint firstItem="os8-ZC-Oy8" firstAttribute="top" secondItem="Esh-G2-SHn" secondAttribute="topMargin" constant="-1" id="KnS-Uq-YyP"/>
                                                 <constraint firstItem="os8-ZC-Oy8" firstAttribute="leading" secondItem="Esh-G2-SHn" secondAttribute="leadingMargin" id="KqJ-8M-GCc"/>
-                                                <constraint firstItem="os8-ZC-Oy8" firstAttribute="centerY" secondItem="Esh-G2-SHn" secondAttribute="centerY" id="Rdm-fE-Tjf"/>
+                                                <constraint firstItem="os8-ZC-Oy8" firstAttribute="centerY" secondItem="Esh-G2-SHn" secondAttribute="centerY" id="Rdm-fE-Tjf">
+                                                    <variation key="heightClass=regular" constant="1"/>
+                                                </constraint>
                                                 <constraint firstItem="os8-ZC-Oy8" firstAttribute="leading" secondItem="Esh-G2-SHn" secondAttribute="leadingMargin" id="UqU-i7-b17"/>
                                                 <constraint firstItem="os8-ZC-Oy8" firstAttribute="trailing" secondItem="Esh-G2-SHn" secondAttribute="trailingMargin" id="nUu-GD-aN2"/>
                                                 <constraint firstItem="os8-ZC-Oy8" firstAttribute="trailing" secondItem="Esh-G2-SHn" secondAttribute="trailingMargin" id="tuW-Qj-trU"/>
@@ -617,14 +616,17 @@
             <objects>
                 <tableViewController title="Edit Note" id="poK-nj-M7K" customClass="EditNoteTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="kDj-sT-UIn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Title" id="Yc7-nI-Vug">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="arc-3v-u8v">
+                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="arc-3v-u8v" id="dAE-kI-LPV">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bco-Wq-dau">
@@ -665,8 +667,10 @@
                             <tableViewSection headerTitle="Content" id="UIm-HN-kza">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="263" id="cRh-Va-95p">
+                                        <rect key="frame" x="0.0" y="209" width="600" height="263"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cRh-Va-95p" id="4sJ-Wb-8TQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="262"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="X57-V0-1WB">
@@ -735,12 +739,15 @@
             <objects>
                 <tableViewController title="Notes" id="TBo-53-SBc" customClass="NotesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="87a-Av-J79">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteTableViewCell" id="MR0-Xo-q80" customClass="NoteTableViewCell">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MR0-Xo-q80" id="Jcn-JZ-CFF">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43A-Y2-8Vh">
@@ -765,7 +772,9 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23T-JR-SPs">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="106" id="MTG-xn-xVY"/>
+                                                <constraint firstAttribute="width" constant="106" id="MTG-xn-xVY">
+                                                    <variation key="heightClass=regular" constant="167"/>
+                                                </constraint>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -794,10 +803,10 @@
                                             <exclude reference="23T-JR-SPs"/>
                                         </mask>
                                         <mask key="constraints">
+                                            <exclude reference="XiF-W3-7vT"/>
                                             <exclude reference="AJT-aj-fpN"/>
                                             <exclude reference="DEL-qd-DFQ"/>
                                             <exclude reference="jfU-sl-8N8"/>
-                                            <exclude reference="XiF-W3-7vT"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular">
@@ -806,10 +815,10 @@
                                             <include reference="23T-JR-SPs"/>
                                         </mask>
                                         <mask key="constraints">
+                                            <include reference="XiF-W3-7vT"/>
                                             <include reference="AJT-aj-fpN"/>
                                             <include reference="DEL-qd-DFQ"/>
                                             <include reference="jfU-sl-8N8"/>
-                                            <include reference="XiF-W3-7vT"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -863,15 +872,14 @@
                                                     <rect key="frame" x="8" y="7" width="584" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <variation key="heightClass=regular" misplaced="YES">
-                                                        <rect key="frame" x="8" y="14" width="584" height="17"/>
-                                                    </variation>
                                                 </textField>
                                             </subviews>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstItem="Uop-1z-iht" firstAttribute="trailing" secondItem="tSY-Qf-2bQ" secondAttribute="trailingMargin" id="0nW-5N-lI8"/>
-                                                <constraint firstItem="Uop-1z-iht" firstAttribute="centerY" secondItem="tSY-Qf-2bQ" secondAttribute="centerY" id="bZD-cU-ze2"/>
+                                                <constraint firstItem="Uop-1z-iht" firstAttribute="centerY" secondItem="tSY-Qf-2bQ" secondAttribute="centerY" id="bZD-cU-ze2">
+                                                    <variation key="heightClass=regular" constant="1"/>
+                                                </constraint>
                                                 <constraint firstItem="Uop-1z-iht" firstAttribute="leading" secondItem="tSY-Qf-2bQ" secondAttribute="leadingMargin" id="c9W-9i-isQ"/>
                                                 <constraint firstItem="Uop-1z-iht" firstAttribute="top" secondItem="tSY-Qf-2bQ" secondAttribute="topMargin" constant="-1" id="lTs-9f-l7F"/>
                                                 <constraint firstItem="Uop-1z-iht" firstAttribute="trailing" secondItem="tSY-Qf-2bQ" secondAttribute="trailingMargin" id="u3p-0q-cVy"/>
@@ -1066,16 +1074,15 @@
                                                     <rect key="frame" x="8" y="7" width="584" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <variation key="heightClass=regular" misplaced="YES">
-                                                        <rect key="frame" x="8" y="14" width="584" height="17"/>
-                                                    </variation>
                                                 </textField>
                                             </subviews>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstItem="2Sf-2f-n7v" firstAttribute="leading" secondItem="tUO-uT-6gb" secondAttribute="leadingMargin" id="1IM-KC-B43"/>
                                                 <constraint firstItem="2Sf-2f-n7v" firstAttribute="leading" secondItem="tUO-uT-6gb" secondAttribute="leadingMargin" id="LLg-eT-ZKF"/>
-                                                <constraint firstItem="2Sf-2f-n7v" firstAttribute="centerY" secondItem="tUO-uT-6gb" secondAttribute="centerY" id="TAk-Tf-gf8"/>
+                                                <constraint firstItem="2Sf-2f-n7v" firstAttribute="centerY" secondItem="tUO-uT-6gb" secondAttribute="centerY" id="TAk-Tf-gf8">
+                                                    <variation key="heightClass=regular" constant="1"/>
+                                                </constraint>
                                                 <constraint firstItem="2Sf-2f-n7v" firstAttribute="trailing" secondItem="tUO-uT-6gb" secondAttribute="trailingMargin" id="YiJ-Lm-ffy"/>
                                                 <constraint firstItem="2Sf-2f-n7v" firstAttribute="centerY" secondItem="tUO-uT-6gb" secondAttribute="centerY" id="ozE-B4-qsQ"/>
                                                 <constraint firstItem="2Sf-2f-n7v" firstAttribute="trailing" secondItem="tUO-uT-6gb" secondAttribute="trailingMargin" id="ry8-Vu-y1d"/>

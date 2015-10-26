@@ -29,7 +29,7 @@
 -(IBAction)saveNote:(id)sender{
     _note[@"taskId"] = [_task valueForKey:@"objectId"];
     _note[@"noteTitle"] = _noteTitle.text;
-    _note[@"noteConntent"] = _noteContent.text;
+    _note[@"noteContent"] = _noteContent.text;
     if(_noteTitle.text.length == 0){
         UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error"
             message:@"Empty title"

@@ -72,8 +72,8 @@
     PFObject *object = [_notes objectAtIndex:indexPath.row];
     cell.noteTitleLabel.text = object[@"noteTitle"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd/MMM/YYYY hh:mm a"];
-    cell.noteCreatedDateLabel.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:object[@"createdAt"]]];
+    [formatter setDateFormat:@"MMM dd YYYY"];
+    cell.noteCreatedDateLabel.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:[object valueForKey:@"createdAt"]]];
     
     return cell;
 }
@@ -133,7 +133,7 @@
         vc.note = object;
         vc.task = _task;
         [self.tableView deselectRowAtIndexPath:indexPath animated:true];
-        vc.navigationItem.title = [object objectForKey:@"title"];
+        vc.navigationItem.title = [object objectForKey:@"noteTitle"];
         
     }else if([segue.identifier  isEqual: @"notesTableToAddNote"]) {
         EditNoteTableViewController *vc = [segue destinationViewController];
