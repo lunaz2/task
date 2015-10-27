@@ -16,6 +16,7 @@
 @property UIDatePicker *datePicker;
 @property UITapGestureRecognizer* tap;
 @property UIImage *image;
+@property BOOL hideSection;
 @end
 
 @implementation EditTaskTableViewController
@@ -23,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _hideSection = false;
     _repeatingSwitch.on = NO;
     checked = NO;
     _repeatingSlider.enabled = NO;
@@ -57,7 +59,9 @@
         _notesCounter.text = [NSString stringWithFormat:@"%d Notes", [[_task valueForKey:@"totalNotes"] intValue]];
     }
     else {
+        _hideSection = true;
         _task = [[PFObject alloc] initWithClassName:@"Task"];
+        
     }
 
     if(checked)
@@ -68,6 +72,12 @@
     _tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:_tap];
     
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    _notesCounter.text = [NSString stringWithFormat:@"%d Notes", [[_task valueForKey:@"totalNotes"] intValue]];
 }
 
 -(void)dismissKeyboard:(UITapGestureRecognizer *) sender {
@@ -210,6 +220,32 @@
     [self presentViewController:repeatDialog animated:YES completion:nil];
 }
  */
+
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if(section == 0)
+        return 2;
+    else if (section == 4 || section == 5) {
+        if(_hideSection)
+            return 0;
+        else return 1;
+    } else return 1;
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if(section == 4 || section == 5) {
+        if(_hideSection)
+            return [[UIView alloc] initWithFrame:CGRectZero];
+    }
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if(section == 4 || section == 5) {
+        if(_hideSection)
+            return 1;
+    }
+    return 32;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

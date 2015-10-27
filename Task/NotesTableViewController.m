@@ -51,8 +51,6 @@
             _notes = [temp mutableCopy];
             [_activityIndicator stopAnimating];
             [self.tableView reloadData];
-            _task[@"totalNotes"] = [NSNumber numberWithInt:[_notes count]];
-            [_task saveInBackground];
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -100,28 +98,8 @@
                 NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
         }];
-        PFQuery *query = [[PFQuery alloc] initWithClassName:@"Note"];
-        [query whereKey:@"objectId" equalTo:[object valueForKey:@"objectId"]];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                NSArray *temp = [[NSArray alloc] initWithArray:objects];
-                for (PFObject *task in temp) {
-                    
-                    [task deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                        if(!error) {
-                            
-                        }
-                        else {
-                            NSLog(@"Error: %@ %@", error, [error userInfo]);
-                        }
-                    }];
-                }
-            } else {
-                // Log details of the failure
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
-            }
-        }];
-        
+        [_task incrementKey:@"totalNotes" byAmount:@-1];
+        [_task saveInBackground];
         [_notes removeObjectAtIndex:indexPath.row];
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];

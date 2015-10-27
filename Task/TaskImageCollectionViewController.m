@@ -97,7 +97,6 @@
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [_addImage addObject:image];
-    NSLog(@"after choose image : %d", _addImage.count);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -144,8 +143,7 @@
             }
         }];
     } else {
-        NSLog(@"row : %d, count: %d ", _addImage.count, indexPath.row);
-        cell.imageView.image = [_addImage objectAtIndex:_addImage.count - indexPath.row];
+        cell.imageView.image = [_addImage objectAtIndex:indexPath.row - _imageArray.count];
     }
     return cell;
 }

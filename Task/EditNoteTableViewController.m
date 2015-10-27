@@ -8,7 +8,7 @@
 
 #import "EditNoteTableViewController.h"
 @interface EditNoteTableViewController ()
-
+@property BOOL didCreate;
 @end
 
 @implementation EditNoteTableViewController
@@ -16,17 +16,22 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    _didCreate = false;
     
     if(_note != nil) {
         _noteTitle.text = _note[@"noteTitle"];
         _noteContent.text = _note[@"noteContent"];
     }
     else {
+        _didCreate = true;
         _note = [[PFObject alloc] initWithClassName:@"Note"];
     }
 }
 
 -(IBAction)saveNote:(id)sender{
+    if(_didCreate)
+        [_task incrementKey:@"totalNotes"];
+    [_task saveInBackground];
     _note[@"taskId"] = [_task valueForKey:@"objectId"];
     _note[@"noteTitle"] = _noteTitle.text;
     _note[@"noteContent"] = _noteContent.text;

@@ -273,6 +273,51 @@ editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
                 NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
         }];
+        
+        PFQuery *noteQuery = [[PFQuery alloc] initWithClassName:@"Note"];
+        [noteQuery whereKey:@"taskId" equalTo:[object valueForKey:@"objectId"]];
+        [noteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                NSArray *temp = [[NSArray alloc] initWithArray:objects];
+                for (PFObject *note in temp) {
+                    
+                    [note deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                        if(!error) {
+                            
+                        }
+                        else {
+                            NSLog(@"Error: %@ %@", error, [error userInfo]);
+                        }
+                    }];
+                }
+            } else {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+        
+        PFQuery *imageQuery = [[PFQuery alloc] initWithClassName:@"ImageData"];
+        [imageQuery whereKey:@"taskId" equalTo:[object valueForKey:@"objectId"]];
+        [imageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                NSArray *temp = [[NSArray alloc] initWithArray:objects];
+                for (PFObject *image in temp) {
+                    
+                    [image deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                        if(!error) {
+                            
+                        }
+                        else {
+                            NSLog(@"Error: %@ %@", error, [error userInfo]);
+                        }
+                    }];
+                }
+            } else {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+
         [_tasks removeObjectAtIndex:indexPath.row];
     }];
     
