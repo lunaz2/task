@@ -9,10 +9,12 @@
 #import "TaskTableViewController.h"
 #import "TaskTableViewCell.h"
 #import "EditTaskTableViewController.h"
+#import "NotesTableViewController.h"
 
 @interface TaskTableViewController ()
 @property NSMutableArray *tasks;
 @property NSMutableArray *allTasks;
+@property PFObject *selectedTask;
 @property UIImage *checkImage;
 @property UIImage *uncheckImage;
 @end
@@ -251,6 +253,7 @@
 editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     PFObject *object = [_tasks objectAtIndex:indexPath.row];
+    _selectedTask = object;
     UITableViewRowAction *complete = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Completed" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         object[@"completed"] = [NSNumber numberWithBool: ![object[@"completed"] boolValue]];
         [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -263,6 +266,11 @@ editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
         }];
     }];
     complete.backgroundColor = [UIColor orangeColor];
+    
+    UITableViewRowAction *viewNote = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"View Notes" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        [self performSegueWithIdentifier:@"taskToNote" sender:nil];
+    }];
+    viewNote.backgroundColor = [UIColor purpleColor];
     
     UITableViewRowAction *delete = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -321,7 +329,7 @@ editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
         [_tasks removeObjectAtIndex:indexPath.row];
     }];
     
-    return @[complete, delete];
+    return @[complete, viewNote, delete];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -337,6 +345,10 @@ editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     else if([segue.identifier isEqual:@"addTask"]) {
         EditTaskTableViewController *vc = [segue destinationViewController];
         vc.taskListId = [_taskList valueForKey:@"objectId"];
+    }
+    else if([segue.identifier isEqual:@"taskToNote"]) {
+        NotesTableViewController *vc = [segue destinationViewController];
+        vc.task = _selectedTask;
     }
 }
 

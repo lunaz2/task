@@ -57,6 +57,7 @@
             _repeatingUnit.selectedSegmentIndex = [[_task objectForKey:@"recurringUnit"] intValue];
         }
         _notesCounter.text = [NSString stringWithFormat:@"%d Notes", [[_task valueForKey:@"totalNotes"] intValue]];
+        _photosCounter.text = [NSString stringWithFormat:@"%d Photos", [[_task valueForKey:@"totalPhotos"] intValue]];
     }
     else {
         _hideSection = true;
@@ -78,6 +79,7 @@
     [super viewDidAppear:animated];
     
     _notesCounter.text = [NSString stringWithFormat:@"%d Notes", [[_task valueForKey:@"totalNotes"] intValue]];
+    _photosCounter.text = [NSString stringWithFormat:@"%d Photos", [[_task valueForKey:@"totalPhotos"] intValue]];
 }
 
 -(void)dismissKeyboard:(UITapGestureRecognizer *) sender {
@@ -111,14 +113,10 @@
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
-- (IBAction)viewImage:(id)sender {
-    [self performSegueWithIdentifier:@"TaskDetailToTaskImage" sender:nil];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier  isEqual: @"TaskDetailToTaskImage"]) {
+    if([segue.identifier  isEqual: @"TaskDetailToTaskPhotoCollection"]) {
         TaskImageCollectionViewController *vc = [segue destinationViewController];
-        vc.taskId = [_task valueForKey:@"objectId"];
+        vc.task = _task;
     }else if([segue.identifier  isEqual: @"editTaskToNotesTable"]) {
         NotesTableViewController *vc = [segue destinationViewController];
         vc.task = _task;
@@ -155,6 +153,10 @@
     _task[@"isRecurring"] = [NSNumber numberWithBool:_repeatingSwitch.isOn];
     _task[@"recurringPeriod"] = [NSNumber numberWithInt:_repeatingSlider.value];
     _task[@"recurringUnit"] = [NSNumber numberWithInt:_repeatingUnit.selectedSegmentIndex];
+    if(_hideSection) {
+        _task[@"totalNotes"] = @0;
+        _task[@"totalPhotos"] = @0;
+    }
 
     [_task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (!error) {
