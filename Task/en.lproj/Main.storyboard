@@ -1576,6 +1576,9 @@
                                                         <constraint firstAttribute="width" constant="91" id="Z3f-Go-G64"/>
                                                     </constraints>
                                                     <state key="normal" title="Add Photo"/>
+                                                    <connections>
+                                                        <action selector="addImage:" destination="3XX-U0-FV9" eventType="touchUpInside" id="Gaj-l3-BLd"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMJ-od-RnC">
                                                     <rect key="frame" x="254" y="6" width="93" height="30"/>

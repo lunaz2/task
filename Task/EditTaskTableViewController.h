@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 #import <MessageUI/MessageUI.h>
 
-@interface EditTaskTableViewController : UITableViewController <UITextFieldDelegate, MFMailComposeViewControllerDelegate>{
+@interface EditTaskTableViewController : UITableViewController <UITextFieldDelegate, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>{
     BOOL checked;
 }
 

@@ -17,6 +17,8 @@
 @property UITapGestureRecognizer* tap;
 @property UIImage *image;
 @property BOOL hideSection;
+@property UIImagePickerController *cameraPicker;
+@property UIImagePickerController *libraryPicker;
 @end
 
 @implementation EditTaskTableViewController
@@ -199,6 +201,56 @@
             _repeatingSliderLabel.hidden = YES;
         }
     }
+}
+
+- (IBAction)addImage:(id)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Take image from" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+    }]];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self takePhoto];
+    }]];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"From Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self chooseExisting];
+    }]];
+    
+    
+    [self presentViewController: alert animated: YES completion: nil];
+}
+
+- (void)takePhoto {
+    _cameraPicker = [[UIImagePickerController alloc] init];
+    _cameraPicker.delegate = self;
+    [_cameraPicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+    [self presentViewController:_cameraPicker animated:YES completion:nil];
+}
+
+- (void)chooseExisting {
+    _libraryPicker = [[UIImagePickerController alloc] init];
+    _libraryPicker.delegate = self;
+    [_libraryPicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [self presentViewController:_libraryPicker animated:YES completion:nil];
+}
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    [_task incrementKey:@"totalPhotos"];
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    PFObject *object = [PFObject objectWithClassName:@"ImageData"];
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.9f);
+    PFFile *imageFile = [PFFile fileWithName:@"image.jpeg" data:imageData];
+    object[@"imageFile"] = imageFile;
+    object[@"taskId"] = [_task valueForKey:@"objectId"];
+    [object saveInBackground];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void) imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*
