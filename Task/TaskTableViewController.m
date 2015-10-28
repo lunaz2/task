@@ -27,16 +27,6 @@
     _uncheckImage = [UIImage imageNamed:@"unchecked_checkbox.png"];
 }
 
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [[self navigationController] setToolbarHidden:NO animated:animated];
-}
-
--(void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[self navigationController] setToolbarHidden:YES animated:animated];
-}
-
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -329,7 +319,7 @@ editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
         [_tasks removeObjectAtIndex:indexPath.row];
     }];
     
-    return @[complete, viewNote, delete];
+    return @[delete, complete, viewNote];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

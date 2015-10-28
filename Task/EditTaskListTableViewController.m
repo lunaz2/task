@@ -26,21 +26,20 @@
     }
 }
 
-
-- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
-    [theTextField resignFirstResponder];
-    return YES;
-}
-
-
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[self navigationController] setToolbarHidden:YES animated:animated];
 }
 
+
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[self navigationController] setToolbarHidden:NO animated:animated];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    [theTextField resignFirstResponder];
+    return YES;
 }
 
 -(IBAction)saveAction:(id)sender {

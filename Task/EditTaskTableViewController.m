@@ -19,6 +19,7 @@
 @property BOOL hideSection;
 @property UIImagePickerController *cameraPicker;
 @property UIImagePickerController *libraryPicker;
+@property MFMailComposeViewController *mail;
 @end
 
 @implementation EditTaskTableViewController
@@ -35,6 +36,8 @@
     datePicker = [[UIDatePicker alloc] init];
     datePicker.datePickerMode = UIDatePickerModeDateAndTime;
     [_editTaskDueField setInputView:datePicker];
+     _mail = [[MFMailComposeViewController alloc] init];
+    _mail.mailComposeDelegate = self;
     
     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     [toolbar setTintColor:[UIColor grayColor]];
@@ -77,6 +80,17 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[self navigationController] setToolbarHidden:YES animated:animated];
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self navigationController] setToolbarHidden:NO animated:animated];
+}
+
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -91,10 +105,9 @@
 - (IBAction)shareTask:(id)sender {
     if([MFMailComposeViewController canSendMail])
     {
-        MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
-        [mail setSubject:_task[@"title"]];
-        [mail setMessageBody:_task[@"description"] isHTML:false];
-        [self presentViewController:mail animated:true completion:nil];
+        [_mail setSubject:_task[@"title"]];
+        [_mail setMessageBody:_task[@"description"] isHTML:false];
+        [self presentViewController:_mail animated:true completion:nil];
     } else {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"No email found on device" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
@@ -105,14 +118,7 @@
 }
 
 -(void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    if(result == MFMailComposeResultFailed) {
-        NSLog(@"email fail");
-    }
-    else if (result == MFMailComposeResultSent) {
-        NSLog(@"email sent");
-    }
-    
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -238,6 +244,7 @@
 
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     [_task incrementKey:@"totalPhotos"];
+    [_task saveInBackground];
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     PFObject *object = [PFObject objectWithClassName:@"ImageData"];
     NSData *imageData = UIImageJPEGRepresentation(image, 0.9f);

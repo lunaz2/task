@@ -12,5 +12,4 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *taskListTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *taskListDueLabel;
-@property (nonatomic, weak) IBOutlet UIButton *taskListEditButton;
 @end

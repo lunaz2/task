@@ -11,7 +11,7 @@
 @interface TaskPhotoViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-
+@property UIGestureRecognizer *tap;
 @end
 
 @implementation TaskPhotoViewController
@@ -37,12 +37,30 @@
             }
         }];
     }
-    
+    _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideBar:)];
+    _tap.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:_tap];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[self navigationController] setToolbarHidden:YES animated:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self navigationController] setToolbarHidden:NO animated:animated];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)hideBar:(id)sender {
+    if(self.navigationController.navigationBarHidden == NO)
+        self.navigationController.navigationBarHidden = YES;
+    else self.navigationController.navigationBarHidden = NO;
 }
 
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {

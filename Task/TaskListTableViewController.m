@@ -14,6 +14,7 @@
 @interface TaskListTableViewController ()
 @property NSMutableArray *taskList;
 @property UIActivityIndicatorView *activityIndicator;
+@property PFObject *selectedTaskList;
 @end
 
 @implementation TaskListTableViewController
@@ -97,16 +98,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+}
+
+-(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView
+                 editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    PFObject *object = [_taskList objectAtIndex:indexPath.row];
+    _selectedTaskList = object;
+    
+    UITableViewRowAction *edit = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Edit" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        [self performSegueWithIdentifier:@"editTaskList" sender:nil];
+    }];
+    edit.backgroundColor = [UIColor blueColor];
+    
+    UITableViewRowAction *delete = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         PFObject *object = [_taskList objectAtIndex:indexPath.row];
-        [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if(!error) {
-                
-            }
-            else {
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
-            }
-        }];
+        
         PFQuery *query = [[PFQuery alloc] initWithClassName:@"Task"];
         [query whereKey:@"username" equalTo:[[PFUser currentUser] username]];
         [query whereKey:@"taskListId" equalTo:[object valueForKey:@"objectId"]];
@@ -173,14 +180,25 @@
             }
         }];
         
+        [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(!error) {
+                
+            }
+            else {
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+        
         [_taskList removeObjectAtIndex:indexPath.row];
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
+    }];
+    
+    return @[delete, edit];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier  isEqual: @"taskListToTask"]) {
+    if([segue.identifier isEqual: @"taskListToTask"]) {
         TaskTableViewController *vc = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         PFObject *object = [_taskList objectAtIndex:indexPath.row];
@@ -189,13 +207,9 @@
         vc.navigationItem.title = [object objectForKey:@"title"];
         
     }
-    else if([segue.identifier  isEqual: @"editTaskList"]) {
+    else if([segue.identifier isEqual: @"editTaskList"]) {
         EditTaskListTableViewController *vc = [segue destinationViewController];
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        PFObject *object = [_taskList objectAtIndex:indexPath.row];
-        vc.taskList = object;
-        [self.tableView deselectRowAtIndexPath:indexPath animated:true];
-        
+        vc.taskList = _selectedTaskList;
     }
 }
 @end
