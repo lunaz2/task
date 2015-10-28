@@ -205,7 +205,12 @@
             cell.taskDueLabel.text = @"Late!";
             cell.taskDueLabel.textColor = [UIColor redColor];
         }
-        else if(secondBetween >= 86400) {
+        else if(secondBetween >= 86400 && secondBetween < 172800) {
+            int days = secondBetween/86400;
+            cell.taskDueLabel.text = [NSString stringWithFormat:@"%d day left",days];
+            cell.taskDueLabel.textColor = [UIColor blackColor];
+        }
+        else if(secondBetween >= 172800){
             int days = secondBetween/86400;
             cell.taskDueLabel.text = [NSString stringWithFormat:@"%d days left",days];
             cell.taskDueLabel.textColor = [UIColor blackColor];
