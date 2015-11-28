@@ -10,6 +10,7 @@
 #import "TaskImageCollectionViewController.h"
 #import "NotesTableViewController.h"
 #import "EditNoteTableViewController.h"
+#import "EMailTableViewController.h"
 
 
 @interface EditTaskTableViewController ()
@@ -19,7 +20,6 @@
 @property BOOL hideSection;
 @property UIImagePickerController *cameraPicker;
 @property UIImagePickerController *libraryPicker;
-@property MFMailComposeViewController *mail;
 @end
 
 @implementation EditTaskTableViewController
@@ -36,8 +36,6 @@
     datePicker = [[UIDatePicker alloc] init];
     datePicker.datePickerMode = UIDatePickerModeDateAndTime;
     [_editTaskDueField setInputView:datePicker];
-     _mail = [[MFMailComposeViewController alloc] init];
-    _mail.mailComposeDelegate = self;
     
     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     [toolbar setTintColor:[UIColor grayColor]];
@@ -105,9 +103,21 @@
 - (IBAction)shareTask:(id)sender {
     if([MFMailComposeViewController canSendMail])
     {
-        [_mail setSubject:_task[@"title"]];
-        [_mail setMessageBody:_task[@"description"] isHTML:false];
-        [self presentViewController:_mail animated:true completion:nil];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Attachment" message:@"Would you like to attach additional images or notes to your email?" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self performSegueWithIdentifier:@"editTaskToEMail" sender:nil];
+        }];
+        [alert addAction:yesAction];
+        
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+            mail.mailComposeDelegate = self;
+            [self presentViewController:mail animated:YES completion:nil];
+        }];
+        [alert addAction:noAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
     } else {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"No email found on device" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
@@ -117,7 +127,7 @@
     
 }
 
--(void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -125,11 +135,14 @@
     if([segue.identifier  isEqual: @"TaskDetailToTaskPhotoCollection"]) {
         TaskImageCollectionViewController *vc = [segue destinationViewController];
         vc.task = _task;
-    }else if([segue.identifier  isEqual: @"editTaskToNotesTable"]) {
+    } else if([segue.identifier  isEqual: @"editTaskToNotesTable"]) {
         NotesTableViewController *vc = [segue destinationViewController];
         vc.task = _task;
-    }else if([segue.identifier  isEqual: @"editTaskToEditNote"]) {
+    } else if([segue.identifier  isEqual: @"editTaskToEditNote"]) {
         EditNoteTableViewController *vc = [segue destinationViewController];
+        vc.task = _task;
+    } else if([segue.identifier  isEqual: @"editTaskToEMail"]) {
+        EMailTableViewController *vc = [segue destinationViewController];
         vc.task = _task;
     }
 }
@@ -160,7 +173,7 @@
     _task[@"completed"] = [NSNumber numberWithBool:checked];
     _task[@"isRecurring"] = [NSNumber numberWithBool:_repeatingSwitch.isOn];
     _task[@"recurringPeriod"] = [NSNumber numberWithInt:_repeatingSlider.value];
-    _task[@"recurringUnit"] = [NSNumber numberWithInt:_repeatingUnit.selectedSegmentIndex];
+    _task[@"recurringUnit"] = [NSNumber numberWithInt:(int)_repeatingUnit.selectedSegmentIndex];
     if(_hideSection) {
         _task[@"totalNotes"] = @0;
         _task[@"totalPhotos"] = @0;
@@ -189,7 +202,7 @@
 
 -(IBAction)sliderValueChanged:(id)sender{
     if(sender == _repeatingSlider){
-        int sliderValue = lroundf(_repeatingSlider.value);
+        int sliderValue = (int)lroundf(_repeatingSlider.value);
         [_repeatingSlider setValue:sliderValue animated:YES];
         _repeatingSliderLabel.text = [NSString stringWithFormat:@"%d",sliderValue];
     }
@@ -259,28 +272,6 @@
 -(void) imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-/*
--(IBAction) setRecurring:(id)sender{
-    UIButton *button = (UIButton *) sender;
-    UIAlertController *repeatDialog = [UIAlertController alertControllerWithTitle:@"Repeating task"
-        message:@"Set the frequency of this task"
-        preferredStyle:UIAlertControllerStyleAlert
-    ];
-    
-    [repeatDialog addTextFieldWithConfigurationHandler:^(UITextField *textField){
-        textField.placeholder = @"Time integer";
-        textField.keyboardType = UIKeyboardTypePhonePad;
-    }];
-    UIAlertAction *week = [UIAlertAction actionWithTitle:@"Week" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        button.titleLabel.text = [NSString stringWithFormat:@"%@ Weeks", repeatDialog.textFields.firstObject.text];
-        NSLog(@"%@ Week(s)", repeatDialog.textFields.firstObject.text);
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [repeatDialog addAction:week];
-    [self presentViewController:repeatDialog animated:YES completion:nil];
-}
- */
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(section == 0)

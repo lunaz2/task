@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		930B62751BDD6F060025B868 /* TaskImageCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 930B62741BDD6F060025B868 /* TaskImageCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
-		930B62781BDD72250025B868 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 930B62771BDD72250025B868 /* CollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		933371A01BD2124C00165D75 /* TaskPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9333719F1BD2124C00165D75 /* TaskPhotoViewController.m */; settings = {ASSET_TAGS = (); }; };
-		93544D051BDC4A1000B24A42 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93544D041BDC4A1000B24A42 /* LogInViewController.m */; settings = {ASSET_TAGS = (); }; };
-		93544D081BDC4A2700B24A42 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93544D071BDC4A2700B24A42 /* SignUpViewController.m */; settings = {ASSET_TAGS = (); }; };
+		930B62751BDD6F060025B868 /* TaskImageCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 930B62741BDD6F060025B868 /* TaskImageCollectionViewController.m */; };
+		930B62781BDD72250025B868 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 930B62771BDD72250025B868 /* CollectionViewCell.m */; };
+		9315EB7E1C0A0C9400E4079C /* EMailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9315EB7D1C0A0C9400E4079C /* EMailTableViewController.m */; };
+		9315EB841C0A192B00E4079C /* PhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9315EB831C0A192B00E4079C /* PhotoTableViewCell.m */; };
+		9315EB871C0A193B00E4079C /* EMailNoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9315EB861C0A193B00E4079C /* EMailNoteTableViewCell.m */; };
+		933371A01BD2124C00165D75 /* TaskPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9333719F1BD2124C00165D75 /* TaskPhotoViewController.m */; };
+		93544D051BDC4A1000B24A42 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93544D041BDC4A1000B24A42 /* LogInViewController.m */; };
+		93544D081BDC4A2700B24A42 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93544D071BDC4A2700B24A42 /* SignUpViewController.m */; };
 		93D721BB1BCD79CB00821FCD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D721BA1BCD79CB00821FCD /* main.m */; };
 		93D721BE1BCD79CB00821FCD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D721BD1BCD79CB00821FCD /* AppDelegate.m */; };
 		93D721C41BCD79CB00821FCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D721C21BCD79CB00821FCD /* Main.storyboard */; };
@@ -19,10 +22,10 @@
 		93D721C91BCD79CB00821FCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D721C71BCD79CB00821FCD /* LaunchScreen.storyboard */; };
 		93D721D41BCD79CB00821FCD /* TaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D721D31BCD79CB00821FCD /* TaskTests.m */; };
 		93D721DF1BCD79CC00821FCD /* TaskUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D721DE1BCD79CC00821FCD /* TaskUITests.m */; };
-		93D721F11BCD79F500821FCD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D721ED1BCD79F500821FCD /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
-		93D721F21BCD79F500821FCD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D721EE1BCD79F500821FCD /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
-		93D721F31BCD79F500821FCD /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D721EF1BCD79F500821FCD /* ParseCrashReporting.framework */; settings = {ASSET_TAGS = (); }; };
-		93D721F41BCD79F500821FCD /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D721F01BCD79F500821FCD /* ParseUI.framework */; settings = {ASSET_TAGS = (); }; };
+		93D721F11BCD79F500821FCD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D721ED1BCD79F500821FCD /* Bolts.framework */; };
+		93D721F21BCD79F500821FCD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D721EE1BCD79F500821FCD /* Parse.framework */; };
+		93D721F31BCD79F500821FCD /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D721EF1BCD79F500821FCD /* ParseCrashReporting.framework */; };
+		93D721F41BCD79F500821FCD /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D721F01BCD79F500821FCD /* ParseUI.framework */; };
 		93D721F61BCD79FF00821FCD /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D721F51BCD79FF00821FCD /* Social.framework */; };
 		93D721F81BCD7A0600821FCD /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D721F71BCD7A0600821FCD /* Accounts.framework */; };
 		93D721FA1BCD7A1600821FCD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D721F91BCD7A1600821FCD /* AudioToolbox.framework */; };
@@ -35,15 +38,15 @@
 		93D722081BCD7A5300821FCD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D722071BCD7A5300821FCD /* SystemConfiguration.framework */; };
 		93D7220A1BCD7A5C00821FCD /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D722091BCD7A5C00821FCD /* libz.1.1.3.tbd */; };
 		93D7220C1BCD7A6B00821FCD /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D7220B1BCD7A6B00821FCD /* libsqlite3.0.tbd */; };
-		93D7220F1BCD7A9F00821FCD /* TaskListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7220E1BCD7A9F00821FCD /* TaskListTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		93D722121BCD7AAC00821FCD /* EditTaskListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D722111BCD7AAC00821FCD /* EditTaskListTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		93D722151BCD7ABB00821FCD /* TaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D722141BCD7ABB00821FCD /* TaskTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		93D722181BCD7ACA00821FCD /* EditTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D722171BCD7ACA00821FCD /* EditTaskTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		93D7221B1BCD7B4000821FCD /* TaskListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7221A1BCD7B4000821FCD /* TaskListTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		93D7221E1BCD7B4C00821FCD /* TaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7221D1BCD7B4C00821FCD /* TaskTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		94857BCD1BDDC63600BE8998 /* EditNoteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94857BC81BDDC63600BE8998 /* EditNoteTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		94857BCE1BDDC63600BE8998 /* NotesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94857BCA1BDDC63600BE8998 /* NotesTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		94857BCF1BDDC63600BE8998 /* NoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94857BCC1BDDC63600BE8998 /* NoteTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		93D7220F1BCD7A9F00821FCD /* TaskListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7220E1BCD7A9F00821FCD /* TaskListTableViewController.m */; };
+		93D722121BCD7AAC00821FCD /* EditTaskListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D722111BCD7AAC00821FCD /* EditTaskListTableViewController.m */; };
+		93D722151BCD7ABB00821FCD /* TaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D722141BCD7ABB00821FCD /* TaskTableViewController.m */; };
+		93D722181BCD7ACA00821FCD /* EditTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D722171BCD7ACA00821FCD /* EditTaskTableViewController.m */; };
+		93D7221B1BCD7B4000821FCD /* TaskListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7221A1BCD7B4000821FCD /* TaskListTableViewCell.m */; };
+		93D7221E1BCD7B4C00821FCD /* TaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7221D1BCD7B4C00821FCD /* TaskTableViewCell.m */; };
+		94857BCD1BDDC63600BE8998 /* EditNoteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94857BC81BDDC63600BE8998 /* EditNoteTableViewController.m */; };
+		94857BCE1BDDC63600BE8998 /* NotesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94857BCA1BDDC63600BE8998 /* NotesTableViewController.m */; };
+		94857BCF1BDDC63600BE8998 /* NoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94857BCC1BDDC63600BE8998 /* NoteTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,12 @@
 		930B62741BDD6F060025B868 /* TaskImageCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskImageCollectionViewController.m; sourceTree = "<group>"; };
 		930B62761BDD72250025B868 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		930B62771BDD72250025B868 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		9315EB7C1C0A0C9300E4079C /* EMailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMailTableViewController.h; sourceTree = "<group>"; };
+		9315EB7D1C0A0C9400E4079C /* EMailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMailTableViewController.m; sourceTree = "<group>"; };
+		9315EB821C0A192B00E4079C /* PhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoTableViewCell.h; sourceTree = "<group>"; };
+		9315EB831C0A192B00E4079C /* PhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTableViewCell.m; sourceTree = "<group>"; };
+		9315EB851C0A193B00E4079C /* EMailNoteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMailNoteTableViewCell.h; sourceTree = "<group>"; };
+		9315EB861C0A193B00E4079C /* EMailNoteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMailNoteTableViewCell.m; sourceTree = "<group>"; };
 		933371941BD200A800165D75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		9333719E1BD2124C00165D75 /* TaskPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskPhotoViewController.h; sourceTree = "<group>"; };
 		9333719F1BD2124C00165D75 /* TaskPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskPhotoViewController.m; sourceTree = "<group>"; };
@@ -166,6 +175,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9315EB7B1C0A0C1F00E4079C /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				9315EB7C1C0A0C9300E4079C /* EMailTableViewController.h */,
+				9315EB7D1C0A0C9400E4079C /* EMailTableViewController.m */,
+				9315EB821C0A192B00E4079C /* PhotoTableViewCell.h */,
+				9315EB831C0A192B00E4079C /* PhotoTableViewCell.m */,
+				9315EB851C0A193B00E4079C /* EMailNoteTableViewCell.h */,
+				9315EB861C0A193B00E4079C /* EMailNoteTableViewCell.m */,
+			);
+			name = Email;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		93D721AD1BCD79CB00821FCD = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +221,7 @@
 				94E728221BDE9C45007751CE /* Task */,
 				94E728211BDE9C27007751CE /* Notes */,
 				94E728231BDE9C8F007751CE /* Photos */,
+				9315EB7B1C0A0C1F00E4079C /* Email */,
 				93D721C51BCD79CB00821FCD /* Assets.xcassets */,
 				93D721C71BCD79CB00821FCD /* LaunchScreen.storyboard */,
 				93D721CA1BCD79CB00821FCD /* Info.plist */,
@@ -453,14 +477,17 @@
 				93544D051BDC4A1000B24A42 /* LogInViewController.m in Sources */,
 				933371A01BD2124C00165D75 /* TaskPhotoViewController.m in Sources */,
 				93D722151BCD7ABB00821FCD /* TaskTableViewController.m in Sources */,
+				9315EB7E1C0A0C9400E4079C /* EMailTableViewController.m in Sources */,
 				93D7221B1BCD7B4000821FCD /* TaskListTableViewCell.m in Sources */,
 				93D7221E1BCD7B4C00821FCD /* TaskTableViewCell.m in Sources */,
 				94857BCF1BDDC63600BE8998 /* NoteTableViewCell.m in Sources */,
+				9315EB871C0A193B00E4079C /* EMailNoteTableViewCell.m in Sources */,
 				93D721BB1BCD79CB00821FCD /* main.m in Sources */,
 				94857BCE1BDDC63600BE8998 /* NotesTableViewController.m in Sources */,
 				93D722181BCD7ACA00821FCD /* EditTaskTableViewController.m in Sources */,
 				93544D081BDC4A2700B24A42 /* SignUpViewController.m in Sources */,
 				93D7220F1BCD7A9F00821FCD /* TaskListTableViewController.m in Sources */,
+				9315EB841C0A192B00E4079C /* PhotoTableViewCell.m in Sources */,
 				930B62781BDD72250025B868 /* CollectionViewCell.m in Sources */,
 				930B62751BDD6F060025B868 /* TaskImageCollectionViewController.m in Sources */,
 				94857BCD1BDDC63600BE8998 /* EditNoteTableViewController.m in Sources */,

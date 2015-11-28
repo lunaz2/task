@@ -126,13 +126,13 @@
 
 - (IBAction)saveAction:(id)sender {
     if(_deleteImage.count > 0) {
-        [_task incrementKey:@"totalPhotos" byAmount:[NSNumber numberWithInt:0 - _deleteImage.count]];
+        [_task incrementKey:@"totalPhotos" byAmount:[NSNumber numberWithInt:0 - (int)_deleteImage.count]];
         for(PFObject *object in _deleteImage) {
             [object deleteInBackground];
         }
     }
     if(_addImage.count > 0) {
-        [_task incrementKey:@"totalPhotos" byAmount:[NSNumber numberWithInt:_addImage.count]];
+        [_task incrementKey:@"totalPhotos" byAmount:[NSNumber numberWithInt: (int)_addImage.count]];
         
         for(UIImage *image in _addImage) {
             PFObject *object = [PFObject objectWithClassName:@"ImageData"];
