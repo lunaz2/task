@@ -23,6 +23,14 @@
     _activityIndicator.hidesWhenStopped = YES;
     _activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
     _activityIndicator.color = [UIColor grayColor];
+    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    self.tableView.backgroundColor = [UIColor clearColor];
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_bg@2x.png"]];
+    [tempImageView setFrame:self.tableView.frame];
+    self.tableView.backgroundView = tempImageView;
+    UIEdgeInsets inset = UIEdgeInsetsMake(15, 0, 0, 0);
+    self.tableView.contentInset = inset;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -67,8 +75,34 @@
     return _notes.count;
 }
 
+
+- (UIImage *)cellBackgroundForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger rowCount = [self tableView:[self tableView] numberOfRowsInSection:0];
+    NSInteger rowIndex = indexPath.row;
+    UIImage *background = nil;
+    
+    if (rowIndex == 0) {
+        background = [UIImage imageNamed:@"cell_top@2x.png"];
+    } else if (rowIndex == rowCount - 1) {
+        background = [UIImage imageNamed:@"cell_bottom@2x.png"];
+    } else {
+        background = [UIImage imageNamed:@"cell_middle@2x.png"];
+    }
+    
+    return background;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NoteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoteTableViewCell" forIndexPath:indexPath];
+    
+    cell.backgroundColor = [UIColor clearColor];
+    
+    UIImage *background = [self cellBackgroundForRowAtIndexPath:indexPath];
+    
+    UIImageView *cellBackgroundView = [[UIImageView alloc] initWithImage:background];
+    cellBackgroundView.image = background;
+    cell.backgroundView = cellBackgroundView;
     
     PFObject *object = [_notes objectAtIndex:indexPath.row];
     cell.noteTitleLabel.text = object[@"noteTitle"];

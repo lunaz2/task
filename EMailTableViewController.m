@@ -22,6 +22,16 @@
     _photos = [[NSMutableArray alloc] init];
     _selectedNotes = [[NSMutableArray alloc] init];
     _selectedPhotos = [[NSMutableArray alloc] init];
+    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    self.tableView.backgroundView = nil;
+    self.tableView.backgroundColor = [UIColor clearColor];
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_bg@2x.png"]];
+    [tempImageView setFrame:self.tableView.frame];
+    self.tableView.backgroundView = tempImageView;
+    UIEdgeInsets inset = UIEdgeInsetsMake(15, 0, 0, 0);
+    self.tableView.contentInset = inset;
+
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -100,6 +110,7 @@
     
     [mail setMessageBody:content isHTML:NO];
     [self presentViewController:mail animated:YES completion:nil];
+    
 }
 
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
@@ -156,8 +167,8 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.section == 0) return 100;
-    else return 44;
+    if(indexPath.section == 0) return 150;
+    else return 71;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -165,16 +176,55 @@
     else return @"Notes";
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    view.tintColor = [UIColor clearColor];
+}
+
+- (UIImage *)cellBackgroundForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger rowCount = [self tableView:[self tableView] numberOfRowsInSection:indexPath.section];
+    
+    NSInteger rowIndex = indexPath.row;
+    UIImage *background = nil;
+    
+    if (rowIndex == 0) {
+        background = [UIImage imageNamed:@"cell_top@2x.png"];
+    } else if (rowIndex == rowCount - 1) {
+        background = [UIImage imageNamed:@"cell_bottom@2x.png"];
+    } else {
+        background = [UIImage imageNamed:@"cell_middle@2x.png"];
+    }
+    
+    return background;
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == 0) {
-    PhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell" forIndexPath:indexPath];
+        PhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell" forIndexPath:indexPath];
+        cell.backgroundView = nil;
+        cell.backgroundColor = [UIColor redColor];
+        
+        UIImage *background = [self cellBackgroundForRowAtIndexPath:indexPath];
+        
+        UIImageView *cellBackgroundView = [[UIImageView alloc] initWithImage:background];
+        cellBackgroundView.image = background;
+        cell.backgroundView = cellBackgroundView;
         cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
         if(_photos.count == [[_task valueForKey:@"totalPhotos"] intValue])
-            cell.imageView.image = [UIImage imageWithData:[_photos objectAtIndex:indexPath.row]];
+            cell.photoView.image = [UIImage imageWithData:[_photos objectAtIndex:indexPath.row]];
         return cell;
     }
     else {
-    EMailNoteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoteCell" forIndexPath:indexPath];
+        EMailNoteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoteCell" forIndexPath:indexPath];
+        cell.backgroundColor = [UIColor clearColor];
+        
+        UIImage *background = [self cellBackgroundForRowAtIndexPath:indexPath];
+        
+        UIImageView *cellBackgroundView = [[UIImageView alloc] initWithImage:background];
+        cellBackgroundView.image = background;
+        cell.backgroundView = cellBackgroundView;
         cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
         if(_notes.count == [[_task valueForKey:@"totalNotes"] intValue])
             cell.titleLabel.text = [_notes objectAtIndex:indexPath.row][@"noteTitle"];

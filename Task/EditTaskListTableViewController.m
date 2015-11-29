@@ -18,11 +18,18 @@
     
     [super viewDidLoad];
     
+    self.tableView.backgroundColor = [UIColor clearColor];
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_bg@2x.png"]];
+    [tempImageView setFrame:self.tableView.frame];
+    self.tableView.backgroundView = tempImageView;
+    
     if(_taskList != nil) {
         _editTaskListField.text = _taskList[@"title"];
+        self.title = _taskList[@"title"];
     }
     else {
         _taskList = [[PFObject alloc] initWithClassName:@"TaskList"];
+        self.title = @"New Task List";
     }
 }
 

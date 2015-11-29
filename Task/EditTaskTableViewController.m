@@ -44,7 +44,13 @@
     [toolbar setItems:[NSArray arrayWithObjects:space,doneBtn,nil]];
     [_editTaskDueField setInputAccessoryView:toolbar];
     
+    self.tableView.backgroundColor = [UIColor clearColor];
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_bg@2x.png"]];
+    [tempImageView setFrame:self.tableView.frame];
+    self.tableView.backgroundView = tempImageView;
+    
     if(_task != nil) {
+        self.title = _task[@"title"];
         _editTaskTitleField.text = _task[@"title"];
         _editTaskDescTextView.text = _task[@"description"];
         [datePicker setDate:_task[@"deadline"]];
@@ -63,6 +69,7 @@
         _photosCounter.text = [NSString stringWithFormat:@"%d Photos", [[_task valueForKey:@"totalPhotos"] intValue]];
     }
     else {
+        self.title = @"New Task";
         _hideSection = true;
         _task = [[PFObject alloc] initWithClassName:@"Task"];
         
@@ -113,6 +120,7 @@
         UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
             mail.mailComposeDelegate = self;
+            [mail.navigationBar setBarTintColor:[UIColor darkGrayColor]];
             [self presentViewController:mail animated:YES completion:nil];
         }];
         [alert addAction:noAction];

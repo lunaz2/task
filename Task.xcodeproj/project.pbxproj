@@ -12,6 +12,15 @@
 		9315EB7E1C0A0C9400E4079C /* EMailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9315EB7D1C0A0C9400E4079C /* EMailTableViewController.m */; };
 		9315EB841C0A192B00E4079C /* PhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9315EB831C0A192B00E4079C /* PhotoTableViewCell.m */; };
 		9315EB871C0A193B00E4079C /* EMailNoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9315EB861C0A193B00E4079C /* EMailNoteTableViewCell.m */; };
+		9315EB8C1C0A4E4F00E4079C /* cell_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9315EB881C0A4E4F00E4079C /* cell_bottom@2x.png */; };
+		9315EB8D1C0A4E4F00E4079C /* cell_middle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9315EB891C0A4E4F00E4079C /* cell_middle@2x.png */; };
+		9315EB8E1C0A4E4F00E4079C /* cell_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9315EB8A1C0A4E4F00E4079C /* cell_top@2x.png */; };
+		9315EB8F1C0A4E4F00E4079C /* common_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9315EB8B1C0A4E4F00E4079C /* common_bg@2x.png */; };
+		9315EB941C0A5B1300E4079C /* cell_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 9315EB901C0A5B1300E4079C /* cell_bottom.png */; };
+		9315EB951C0A5B1300E4079C /* cell_middle.png in Resources */ = {isa = PBXBuildFile; fileRef = 9315EB911C0A5B1300E4079C /* cell_middle.png */; };
+		9315EB961C0A5B1300E4079C /* cell_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 9315EB921C0A5B1300E4079C /* cell_top.png */; };
+		9315EB971C0A5B1300E4079C /* common_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9315EB931C0A5B1300E4079C /* common_bg.png */; };
+		9315EB991C0A73FE00E4079C /* cell_top_tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 9315EB981C0A73FE00E4079C /* cell_top_tile.png */; };
 		933371A01BD2124C00165D75 /* TaskPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9333719F1BD2124C00165D75 /* TaskPhotoViewController.m */; };
 		93544D051BDC4A1000B24A42 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93544D041BDC4A1000B24A42 /* LogInViewController.m */; };
 		93544D081BDC4A2700B24A42 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93544D071BDC4A2700B24A42 /* SignUpViewController.m */; };
@@ -77,6 +86,15 @@
 		9315EB831C0A192B00E4079C /* PhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTableViewCell.m; sourceTree = "<group>"; };
 		9315EB851C0A193B00E4079C /* EMailNoteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMailNoteTableViewCell.h; sourceTree = "<group>"; };
 		9315EB861C0A193B00E4079C /* EMailNoteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMailNoteTableViewCell.m; sourceTree = "<group>"; };
+		9315EB881C0A4E4F00E4079C /* cell_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_bottom@2x.png"; sourceTree = "<group>"; };
+		9315EB891C0A4E4F00E4079C /* cell_middle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_middle@2x.png"; sourceTree = "<group>"; };
+		9315EB8A1C0A4E4F00E4079C /* cell_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_top@2x.png"; sourceTree = "<group>"; };
+		9315EB8B1C0A4E4F00E4079C /* common_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_bg@2x.png"; sourceTree = "<group>"; };
+		9315EB901C0A5B1300E4079C /* cell_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_bottom.png; sourceTree = "<group>"; };
+		9315EB911C0A5B1300E4079C /* cell_middle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_middle.png; sourceTree = "<group>"; };
+		9315EB921C0A5B1300E4079C /* cell_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_top.png; sourceTree = "<group>"; };
+		9315EB931C0A5B1300E4079C /* common_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = common_bg.png; sourceTree = "<group>"; };
+		9315EB981C0A73FE00E4079C /* cell_top_tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_top_tile.png; sourceTree = "<group>"; };
 		933371941BD200A800165D75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		9333719E1BD2124C00165D75 /* TaskPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskPhotoViewController.h; sourceTree = "<group>"; };
 		9333719F1BD2124C00165D75 /* TaskPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskPhotoViewController.m; sourceTree = "<group>"; };
@@ -233,6 +251,15 @@
 		93D721B91BCD79CB00821FCD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9315EB981C0A73FE00E4079C /* cell_top_tile.png */,
+				9315EB901C0A5B1300E4079C /* cell_bottom.png */,
+				9315EB911C0A5B1300E4079C /* cell_middle.png */,
+				9315EB921C0A5B1300E4079C /* cell_top.png */,
+				9315EB931C0A5B1300E4079C /* common_bg.png */,
+				9315EB881C0A4E4F00E4079C /* cell_bottom@2x.png */,
+				9315EB891C0A4E4F00E4079C /* cell_middle@2x.png */,
+				9315EB8A1C0A4E4F00E4079C /* cell_top@2x.png */,
+				9315EB8B1C0A4E4F00E4079C /* common_bg@2x.png */,
 				93D721BA1BCD79CB00821FCD /* main.m */,
 			);
 			name = "Supporting Files";
@@ -446,8 +473,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				93D721C91BCD79CB00821FCD /* LaunchScreen.storyboard in Resources */,
+				9315EB8D1C0A4E4F00E4079C /* cell_middle@2x.png in Resources */,
+				9315EB8E1C0A4E4F00E4079C /* cell_top@2x.png in Resources */,
+				9315EB8F1C0A4E4F00E4079C /* common_bg@2x.png in Resources */,
+				9315EB971C0A5B1300E4079C /* common_bg.png in Resources */,
+				9315EB951C0A5B1300E4079C /* cell_middle.png in Resources */,
 				93D721C61BCD79CB00821FCD /* Assets.xcassets in Resources */,
+				9315EB991C0A73FE00E4079C /* cell_top_tile.png in Resources */,
 				93D721C41BCD79CB00821FCD /* Main.storyboard in Resources */,
+				9315EB941C0A5B1300E4079C /* cell_bottom.png in Resources */,
+				9315EB8C1C0A4E4F00E4079C /* cell_bottom@2x.png in Resources */,
+				9315EB961C0A5B1300E4079C /* cell_top.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

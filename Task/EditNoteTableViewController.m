@@ -9,6 +9,7 @@
 #import "EditNoteTableViewController.h"
 @interface EditNoteTableViewController ()
 @property BOOL didCreate;
+@property UITapGestureRecognizer *tap;
 @end
 
 @implementation EditNoteTableViewController
@@ -19,13 +20,23 @@
     _didCreate = false;
     
     if(_note != nil) {
+        self.title = _note[@"noteTitle"];
         _noteTitle.text = _note[@"noteTitle"];
         _noteContent.text = _note[@"noteContent"];
     }
     else {
+        self.title = @"New Note";
         _didCreate = true;
         _note = [[PFObject alloc] initWithClassName:@"Note"];
     }
+    
+    _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+    _tap.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:_tap];
+}
+
+-(void)dismissKeyboard:(UITapGestureRecognizer *) sender {
+    [self.view endEditing:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
