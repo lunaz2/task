@@ -29,6 +29,12 @@
     _addImage = [[NSMutableArray alloc] init];
     _objectArray = [[NSMutableArray alloc] init];
     
+    self.collectionView.backgroundView = nil;
+    self.collectionView.backgroundColor = [UIColor clearColor];
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_bg@2x.png"]];
+    [tempImageView setFrame:self.collectionView.frame];
+    self.collectionView.backgroundView = tempImageView;
+    
     UILongPressGestureRecognizer *press = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteImage:)];
     press.minimumPressDuration = 0.5;
     press.delaysTouchesBegan = YES;

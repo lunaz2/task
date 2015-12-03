@@ -122,11 +122,9 @@
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:position];
     PhotoTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     if(cell.selectedSwitch.isOn) {
-        cell.backgroundColor = [UIColor clearColor];
         [_selectedPhotos addObject:[NSNumber numberWithInt:indexPath.row]];
     }
     else {
-        cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
         for(NSNumber *path in _selectedPhotos) {
             if(indexPath.row == [path integerValue])
                [_selectedPhotos removeObject:path];
@@ -139,11 +137,9 @@
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:position];
     EMailNoteTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     if(cell.selectedSwitch.isOn) {
-        cell.backgroundColor = [UIColor clearColor];
         [_selectedNotes addObject:[NSNumber numberWithInt:indexPath.row]];
     }
     else {
-        cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
         for(NSNumber *path in _selectedNotes) {
             if(indexPath.row == [path integerValue])
                 [_selectedNotes removeObject:path];
@@ -203,15 +199,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == 0) {
         PhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell" forIndexPath:indexPath];
-        cell.backgroundView = nil;
-        cell.backgroundColor = [UIColor redColor];
+        
+        cell.backgroundColor = [UIColor clearColor];
         
         UIImage *background = [self cellBackgroundForRowAtIndexPath:indexPath];
         
         UIImageView *cellBackgroundView = [[UIImageView alloc] initWithImage:background];
         cellBackgroundView.image = background;
         cell.backgroundView = cellBackgroundView;
-        cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
         if(_photos.count == [[_task valueForKey:@"totalPhotos"] intValue])
             cell.photoView.image = [UIImage imageWithData:[_photos objectAtIndex:indexPath.row]];
         return cell;
@@ -225,7 +220,6 @@
         UIImageView *cellBackgroundView = [[UIImageView alloc] initWithImage:background];
         cellBackgroundView.image = background;
         cell.backgroundView = cellBackgroundView;
-        cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
         if(_notes.count == [[_task valueForKey:@"totalNotes"] intValue])
             cell.titleLabel.text = [_notes objectAtIndex:indexPath.row][@"noteTitle"];
         return cell;

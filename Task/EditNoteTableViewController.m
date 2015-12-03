@@ -19,6 +19,12 @@
     [super viewDidLoad];
     _didCreate = false;
     
+    self.tableView.backgroundView = nil;
+    self.tableView.backgroundColor = [UIColor clearColor];
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_bg@2x.png"]];
+    [tempImageView setFrame:self.tableView.frame];
+    self.tableView.backgroundView = tempImageView;
+    
     if(_note != nil) {
         self.title = _note[@"noteTitle"];
         _noteTitle.text = _note[@"noteTitle"];

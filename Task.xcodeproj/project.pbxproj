@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		930371A31C10B4EB0010EED0 /* Checkbox_colored_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 9303719F1C10B4EB0010EED0 /* Checkbox_colored_empty.png */; };
+		930371A41C10B4EB0010EED0 /* Checkbox_colored.png in Resources */ = {isa = PBXBuildFile; fileRef = 930371A01C10B4EB0010EED0 /* Checkbox_colored.png */; };
+		930371A51C10B4EB0010EED0 /* EZTaskManagerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 930371A11C10B4EB0010EED0 /* EZTaskManagerIcon.png */; };
+		930371A61C10B4EB0010EED0 /* EZTaskManagerLoadingSplash no ellipses.png in Resources */ = {isa = PBXBuildFile; fileRef = 930371A21C10B4EB0010EED0 /* EZTaskManagerLoadingSplash no ellipses.png */; };
+		930371A81C10B72F0010EED0 /* EZTaskManagerLogin Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 930371A71C10B72F0010EED0 /* EZTaskManagerLogin Background.png */; };
 		930B62751BDD6F060025B868 /* TaskImageCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 930B62741BDD6F060025B868 /* TaskImageCollectionViewController.m */; };
 		930B62781BDD72250025B868 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 930B62771BDD72250025B868 /* CollectionViewCell.m */; };
 		9315EB7E1C0A0C9400E4079C /* EMailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9315EB7D1C0A0C9400E4079C /* EMailTableViewController.m */; };
@@ -76,6 +81,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9303719F1C10B4EB0010EED0 /* Checkbox_colored_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Checkbox_colored_empty.png; sourceTree = "<group>"; };
+		930371A01C10B4EB0010EED0 /* Checkbox_colored.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Checkbox_colored.png; sourceTree = "<group>"; };
+		930371A11C10B4EB0010EED0 /* EZTaskManagerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EZTaskManagerIcon.png; sourceTree = "<group>"; };
+		930371A21C10B4EB0010EED0 /* EZTaskManagerLoadingSplash no ellipses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EZTaskManagerLoadingSplash no ellipses.png"; sourceTree = "<group>"; };
+		930371A71C10B72F0010EED0 /* EZTaskManagerLogin Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EZTaskManagerLogin Background.png"; sourceTree = "<group>"; };
 		930B62731BDD6F060025B868 /* TaskImageCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskImageCollectionViewController.h; sourceTree = "<group>"; };
 		930B62741BDD6F060025B868 /* TaskImageCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskImageCollectionViewController.m; sourceTree = "<group>"; };
 		930B62761BDD72250025B868 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
@@ -251,6 +261,11 @@
 		93D721B91BCD79CB00821FCD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				930371A71C10B72F0010EED0 /* EZTaskManagerLogin Background.png */,
+				9303719F1C10B4EB0010EED0 /* Checkbox_colored_empty.png */,
+				930371A01C10B4EB0010EED0 /* Checkbox_colored.png */,
+				930371A11C10B4EB0010EED0 /* EZTaskManagerIcon.png */,
+				930371A21C10B4EB0010EED0 /* EZTaskManagerLoadingSplash no ellipses.png */,
 				9315EB981C0A73FE00E4079C /* cell_top_tile.png */,
 				9315EB901C0A5B1300E4079C /* cell_bottom.png */,
 				9315EB911C0A5B1300E4079C /* cell_middle.png */,
@@ -472,6 +487,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				930371A31C10B4EB0010EED0 /* Checkbox_colored_empty.png in Resources */,
+				930371A61C10B4EB0010EED0 /* EZTaskManagerLoadingSplash no ellipses.png in Resources */,
 				93D721C91BCD79CB00821FCD /* LaunchScreen.storyboard in Resources */,
 				9315EB8D1C0A4E4F00E4079C /* cell_middle@2x.png in Resources */,
 				9315EB8E1C0A4E4F00E4079C /* cell_top@2x.png in Resources */,
@@ -482,6 +499,9 @@
 				9315EB991C0A73FE00E4079C /* cell_top_tile.png in Resources */,
 				93D721C41BCD79CB00821FCD /* Main.storyboard in Resources */,
 				9315EB941C0A5B1300E4079C /* cell_bottom.png in Resources */,
+				930371A81C10B72F0010EED0 /* EZTaskManagerLogin Background.png in Resources */,
+				930371A41C10B4EB0010EED0 /* Checkbox_colored.png in Resources */,
+				930371A51C10B4EB0010EED0 /* EZTaskManagerIcon.png in Resources */,
 				9315EB8C1C0A4E4F00E4079C /* cell_bottom@2x.png in Resources */,
 				9315EB961C0A5B1300E4079C /* cell_top.png in Resources */,
 			);

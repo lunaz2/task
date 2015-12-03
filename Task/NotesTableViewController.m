@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     _activityIndicator.center = self.view.center;
     _activityIndicator.hidesWhenStopped = YES;
     _activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;

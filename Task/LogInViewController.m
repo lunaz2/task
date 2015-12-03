@@ -14,19 +14,18 @@
 @implementation LogInViewController
 
 - (void)viewDidLoad {
-    [_activityIndicator startAnimating];
     [super viewDidLoad];
     _passwordField.text = nil;
     _usernameField.text = nil;
-    if([PFUser currentUser] != nil) {
-        [_activityIndicator stopAnimating];
-        [self performSegueWithIdentifier:@"LogInToTaskList" sender:nil];
-    }
-    else [_activityIndicator stopAnimating];
-    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[self navigationController] setToolbarHidden:YES animated:animated];
+    [[self navigationController] setNavigationBarHidden:YES animated:animated];
 }
 
 -(void)dismissKeyboard:(UITapGestureRecognizer *) sender {
@@ -37,7 +36,6 @@
     [super didReceiveMemoryWarning];}
 
 - (IBAction)logIn:(id)sender {
-    
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Missing Information" message:@"Please fill out all information" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:ok];
@@ -54,6 +52,7 @@
             if (user != nil)
                 [self performSegueWithIdentifier:@"LogInToTaskList" sender:nil];
             else {
+                [_activityIndicator stopAnimating];
                 [alert setTitle:@"Unable to log in"];
                 [alert setMessage:@"Username does not exist or wrong password"];
                 [self presentViewController:alert animated:YES completion:nil];
@@ -65,6 +64,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
     if (theTextField == _usernameField) {
+        NSLog(@"here");
         [_passwordField becomeFirstResponder];
     } else if (theTextField == _passwordField) {
         [_passwordField resignFirstResponder];

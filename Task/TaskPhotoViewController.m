@@ -17,6 +17,9 @@
 @implementation TaskPhotoViewController
 
 - (void)viewDidLoad {
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg@2x.png"]];
+    
     [_activityIndicator startAnimating];
     [super viewDidLoad];
     

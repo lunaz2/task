@@ -13,23 +13,13 @@
 
 @interface TaskListTableViewController ()
 @property NSMutableArray *taskList;
-@property UIActivityIndicatorView *activityIndicator;
 @property PFObject *selectedTaskList;
 @end
 
 @implementation TaskListTableViewController
 
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _activityIndicator.center = self.view.center;
-    _activityIndicator.hidesWhenStopped = YES;
-    _activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-    _activityIndicator.color = [UIColor grayColor];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -43,6 +33,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[self navigationController] setToolbarHidden:YES animated:animated];
+    [[self navigationController] setNavigationBarHidden:NO animated:animated];
 }
 
 
@@ -53,8 +44,12 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [_activityIndicator startAnimating];
-    [self fetchAllObjects];
+    if([PFUser currentUser] == nil) {
+        [self performSegueWithIdentifier:@"TaskListToLogIn" sender:nil];
+    }
+    else {
+        [self fetchAllObjects];
+    }
 }
 
 -(void) fetchAllObjects{
@@ -64,7 +59,6 @@
         if (!error) {
             NSArray *temp = [[NSArray alloc] initWithArray:objects];
             _taskList = [temp mutableCopy];
-            [_activityIndicator stopAnimating];
             [self.tableView reloadData];
         } else {
             // Log details of the failure
@@ -76,7 +70,9 @@
 
 - (IBAction)logoutAction:(id)sender {
     [PFUser logOut];
-    [[self navigationController] popToRootViewControllerAnimated:YES];
+    [_taskList removeAllObjects];
+    [self.tableView reloadData];
+    [self performSegueWithIdentifier:@"TaskListToLogIn" sender:nil];
 }
 
 

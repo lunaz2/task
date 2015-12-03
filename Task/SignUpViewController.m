@@ -80,6 +80,9 @@
     }
 
 }
+- (IBAction)cancelAction:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
     if (theTextField == _usernameField) {
