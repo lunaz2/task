@@ -50,14 +50,12 @@
 }
 
 -(IBAction)saveAction:(id)sender {
-    _taskList[@"username"] = [[PFUser currentUser] username];
-    _taskList[@"title"] = _editTaskListField.text;
     if(_editTaskListField.text.length == 0){
-        UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error"
-            message:@"Empty title"
+        UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Empty Title"
+            message:@"Please type in the title for the task list"
             preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-            NSLog(@"typed: %@",error.textFields.firstObject.text);
+            _editTaskListField.text = error.textFields.firstObject.text;
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
         [error addTextFieldWithConfigurationHandler:^(UITextField *textField){
@@ -67,7 +65,9 @@
         [error addAction:ok];
         [self presentViewController:error animated:YES completion:nil];
     }else{
-    [_taskList saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        _taskList[@"username"] = [[PFUser currentUser] username];
+        _taskList[@"title"] = _editTaskListField.text;
+        [_taskList saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (!error) {
         }
         else {

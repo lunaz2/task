@@ -91,11 +91,11 @@
     [query whereKey:@"taskId" equalTo:[_task valueForKey:@"objectId"]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            [_objectArray addObjectsFromArray:objects];
             for(PFObject *object in objects) {
                 PFFile *imageFile = object[@"imageFile"];
                 [imageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
                     if(!error) {
+                        [_objectArray addObject:object];
                         [_imageArray addObject:[UIImage imageWithData:data]];
                         [self.collectionView reloadData];
                     }
@@ -181,6 +181,16 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+- (IBAction)infoAction:(id)sender {
+    UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Information"
+                                                                   message:@"Tap and hold photo to delete it"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+    }];
+    [error addAction:ok];
+    [self presentViewController:error animated:YES completion:nil];
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
