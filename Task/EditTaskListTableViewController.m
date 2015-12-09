@@ -9,7 +9,7 @@
 #import "EditTaskListTableViewController.h"
 
 @interface EditTaskListTableViewController ()
-
+@property NSArray *pickerData;
 @end
 
 @implementation EditTaskListTableViewController
@@ -17,6 +17,10 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    _pickerData = @[@"Custom",@"Family",@"Friends",@"School",@"Work",@"Birthdays",@"Holidays"];
+    self.picker.dataSource = self;
+    self.picker.delegate = self;
     
     self.tableView.backgroundColor = [UIColor clearColor];
     UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_bg@2x.png"]];
@@ -84,5 +88,30 @@
     // Dispose of any resources that can be recreated.
 }
 
+// The number of columns of data
+- (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
 
+// The number of rows of data
+- (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return _pickerData.count;
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return _pickerData[row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if(row != 0){
+        _editTaskListField.text = _pickerData[row];
+    }else{
+        _editTaskListField.text = @"";
+    }
+}
 @end

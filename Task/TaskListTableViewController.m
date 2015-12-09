@@ -53,13 +53,6 @@
     }
 }
 
-- (void)getTasks {
-    NSLog(@"getting tasks...");
-       int i = 0;
-    
-    NSLog(@"Reloading data...");
-    [self.tableView reloadData];
-}
 
 -(void) fetchAllObjects{
     
@@ -88,7 +81,7 @@
                         
                     }
                     i -= 1;
-                    if(i >= 0){
+                    if(i <= 0){
                         
                         _topTasks = [taskDue mutableCopy];
                         [self.tableView reloadData];
