@@ -12,4 +12,7 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *taskListTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *taskListDueLabel;
+@property (nonatomic, weak) IBOutlet UILabel *taskListNextTaskTitle;
+@property (nonatomic, weak) IBOutlet UILabel *taskListNextTaskDue;
+@property (nonatomic, weak) IBOutlet UILabel *taskListNextTaskLate;
 @end

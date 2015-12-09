@@ -14,6 +14,7 @@
 @interface TaskListTableViewController ()
 @property NSMutableArray *taskList;
 @property PFObject *selectedTaskList;
+@property NSMutableDictionary *topTasks;
 @end
 
 @implementation TaskListTableViewController
@@ -52,20 +53,67 @@
     }
 }
 
+- (void)getTasks {
+    NSLog(@"getting tasks...");
+       int i = 0;
+    
+    NSLog(@"Reloading data...");
+    [self.tableView reloadData];
+}
+
 -(void) fetchAllObjects{
+    
     PFQuery *query = [[PFQuery alloc] initWithClassName:@"TaskList"];
     [query whereKey:@"username" equalTo:[[PFUser currentUser] username]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             NSArray *temp = [[NSArray alloc] initWithArray:objects];
             _taskList = [temp mutableCopy];
+            //[self getTasks];
+            NSMutableDictionary* taskDue = [[NSMutableDictionary alloc] init];
+            __block int i = [_taskList count];
+            for(PFObject* object in _taskList){
+                NSLog(@"%@",object.objectId);
+                PFQuery *tasks = [[PFQuery alloc] initWithClassName:@"Task"];
+                
+                [tasks whereKey:@"taskListId" equalTo:object.objectId];
+          
+                [tasks whereKey:@"completed" equalTo:[NSNumber numberWithBool:NO]];
+                [tasks orderByAscending:@"deadline"];
+                [tasks setLimit: 1];
+                [tasks getFirstObjectInBackgroundWithBlock:^(PFObject * taskObject, NSError * taskError) {
+                    if(taskObject){
+                        [taskDue setObject:taskObject forKey:object.objectId];
+                        NSLog(@"%@", [[taskDue objectForKey:object.objectId] objectForKey:@"title"]);
+                        
+                    }
+                    i -= 1;
+                    if(i >= 0){
+                        
+                        _topTasks = [taskDue mutableCopy];
+                        [self.tableView reloadData];
+                    }
+                    
+                    
+                }];
+                
+                
+
+                
+            }
+            
             [self.tableView reloadData];
+            
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+    
+    //NSLog(@"%@",[taskDue[3] objectForKey:@"title"]);
+    
 }
+
 
 
 - (IBAction)logoutAction:(id)sender {
@@ -116,8 +164,34 @@
     
     PFObject *object = [_taskList objectAtIndex:indexPath.row];
     cell.taskListTitleLabel.text = object[@"title"];
-    cell.taskListDueLabel.text = [NSString stringWithFormat:@"%d out of %d completed", [object[@"completed"] intValue], [object[@"totalTask"] intValue]];
+    cell.taskListDueLabel.text = [NSString stringWithFormat:@"Tasks Remaining: %d",[object[@"totalTask"] intValue] - [object[@"completed"] intValue]];
     
+    PFObject *task = _topTasks[object.objectId];
+    cell.taskListNextTaskLate.hidden = TRUE;
+    if(task != NULL){
+        cell.taskListNextTaskTitle.hidden = FALSE;
+        NSString *timeLeft = @" ";
+        NSDate* now = [NSDate date];
+        if([task[@"deadline"] compare:now] == NSOrderedDescending){
+            cell.taskListNextTaskDue.hidden = FALSE;
+            NSString *dateString = [NSDateFormatter localizedStringFromDate:task[@"deadline"]
+                                dateStyle:NSDateFormatterShortStyle
+                                timeStyle:NSDateFormatterShortStyle];
+            
+            timeLeft = dateString;
+            cell.taskListNextTaskDue.text = [NSString stringWithFormat:@"Due: %@", timeLeft];
+            cell.taskListNextTaskTitle.text =[ NSString stringWithFormat:@"Next up: %@",task[@"title"]];
+        }else{
+            cell.taskListNextTaskLate.hidden = FALSE;
+            cell.taskListNextTaskDue.hidden = TRUE;
+            cell.taskListNextTaskTitle.text =[ NSString stringWithFormat:@"Next up: %@",task[@"title"]];
+        }
+        
+        
+    }else{
+        cell.taskListNextTaskTitle.hidden = TRUE;
+        cell.taskListNextTaskDue.hidden = TRUE;
+    }
     return cell;
 }
 
