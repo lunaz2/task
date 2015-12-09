@@ -2,7 +2,7 @@
 //  TaskListTableViewController.m
 //  Task
 //
-//  Created by Quynh Nguyen on 10/13/15.
+//  Created by Team 4 on 10/13/15.
 //  Copyright © 2015 Group 4. All rights reserved.
 //
 
@@ -45,10 +45,12 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
     if([PFUser currentUser] == nil) {
         [self performSegueWithIdentifier:@"TaskListToLogIn" sender:nil];
     }
     else {
+        [[self navigationController] setNavigationBarHidden:NO animated:animated];
         [self fetchAllObjects];
     }
 }

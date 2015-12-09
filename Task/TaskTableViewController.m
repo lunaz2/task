@@ -2,7 +2,7 @@
 //  TaskTableViewController.m
 //  Task
 //
-//  Created by Quynh Nguyen on 10/13/15.
+//  Created by Team 4 on 10/13/15.
 //  Copyright © 2015 Group 4. All rights reserved.
 //
 
@@ -61,6 +61,7 @@
                     completed++;
             }
             _taskList[@"completed"] = [NSNumber numberWithInt:completed];
+
             [_taskList saveInBackground];
             
             [self.tableView reloadData];
@@ -175,6 +176,22 @@
     cell.backgroundView = cellBackgroundView;
     
     PFObject *object = [_tasks objectAtIndex:indexPath.row];
+    
+    //cell.photoIcon.hidden = TRUE;
+    //cell.photoCount.hidden = TRUE;
+    //cell.noteIcon.hidden = TRUE;
+    //cell.noteCount.hidden = TRUE;
+    
+    //if([object objectForKey:@"totalNotes"] > 0){
+    //    cell.noteIcon.hidden = FALSE;
+    //    cell.noteCount.hidden = FALSE;
+    //    cell.noteCount.text = [NSString stringWithFormat:@"%@", [object objectForKey:@"totalNotes"]];
+    //}
+    //if([object objectForKey:@"totalPhotos"] > 0){
+    //    cell.photoIcon.hidden = FALSE;
+    //    cell.photoCount.hidden = FALSE;
+    //    cell.photoCount.text = [NSString stringWithFormat:@"%@", [object objectForKey:@"totalNotes"]];
+    //}
     
     cell.taskTitleLabel.text = object[@"title"];
     cell.repeatIcon.hidden = YES;

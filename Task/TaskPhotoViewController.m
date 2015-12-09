@@ -2,7 +2,7 @@
 //  TaskPhotoViewController.m
 //  Task
 //
-//  Created by Quynh Nguyen on 10/17/15.
+//  Created by Team 4 on 10/17/15.
 //  Copyright © 2015 Group 4. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  TaskTableViewCell.h
 //  Task
 //
-//  Created by Quynh Nguyen on 10/13/15.
+//  Created by Team 4 on 10/13/15.
 //  Copyright © 2015 Group 4. All rights reserved.
 //
 
@@ -16,5 +16,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *repeatIcon;
 @property (weak, nonatomic) IBOutlet UIButton *notesButton;
 @property (weak, nonatomic) IBOutlet UIButton *photosButton;
+@property (weak, nonatomic) IBOutlet UIImageView *noteIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *photoIcon;
+@property (weak, nonatomic) IBOutlet UILabel *noteCount;
+@property (weak, nonatomic) IBOutlet UILabel *photoCount;
 
 @end

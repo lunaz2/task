@@ -2,7 +2,7 @@
 //  SignUpViewController.m
 //  Task
 //
-//  Created by Quynh Nguyen on 10/24/15.
+//  Created by Team 4 on 10/24/15.
 //  Copyright © 2015 Group 4. All rights reserved.
 //
 
@@ -20,6 +20,17 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[self navigationController] setToolbarHidden:YES animated:animated];
+    [[self navigationController] setNavigationBarHidden:YES animated:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self navigationController] setNavigationBarHidden:NO animated:animated];
 }
 
 -(void)dismissKeyboard:(UITapGestureRecognizer *) sender {
